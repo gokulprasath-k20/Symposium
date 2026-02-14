@@ -92,8 +92,7 @@ const departmentData = {
         name: "Science & Humanities",
         icon: "📚",
         paperTopics: [
-            "Language, Technology and Transformation",
-            "The Role of English in Modern India",
+            "Language, Technology and Transformation:The Role of English in Modern India",
             "Real World Applications in Engineering",
             "The Physics of Semiconductors",
             "Sustainable Materials in Emerging Technology"
@@ -264,9 +263,49 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// Registration Form
+// Registration Form - Dynamic Paper Topic Selection
 const registerForm = document.getElementById('registerForm');
+const departmentSelect = registerForm.querySelector('select[name="department"]');
+const eventSelect = registerForm.querySelector('select[name="event"]');
+const paperTopicField = document.getElementById('paperTopicField');
+const paperTopicSelect = document.getElementById('paperTopicSelect');
 
+// Show/hide paper topic field based on event selection
+eventSelect.addEventListener('change', () => {
+    if (eventSelect.value === 'paper') {
+        paperTopicField.style.display = 'block';
+        paperTopicSelect.required = true;
+        updatePaperTopics();
+    } else {
+        paperTopicField.style.display = 'none';
+        paperTopicSelect.required = false;
+        paperTopicSelect.value = '';
+    }
+});
+
+// Update paper topics when department changes
+departmentSelect.addEventListener('change', () => {
+    if (eventSelect.value === 'paper') {
+        updatePaperTopics();
+    }
+});
+
+// Function to update paper topics based on selected department
+function updatePaperTopics() {
+    const selectedDept = departmentSelect.value;
+    paperTopicSelect.innerHTML = '<option value="">Select Topic</option>';
+
+    if (selectedDept && departmentData[selectedDept] && departmentData[selectedDept].paperTopics) {
+        departmentData[selectedDept].paperTopics.forEach(topic => {
+            const option = document.createElement('option');
+            option.value = topic;
+            option.textContent = topic;
+            paperTopicSelect.appendChild(option);
+        });
+    }
+}
+
+// Form submission with confirmation
 registerForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -274,30 +313,60 @@ registerForm.addEventListener('submit', (e) => {
     const formData = new FormData(registerForm);
     const data = Object.fromEntries(formData);
 
-    // Simple validation
-    if (!data.name || !data.college || !data.department || !data.mobile || !data.event) {
+    // Validation
+    if (!data.name || !data.college || !data.department || !data.mobile || !data.event || !data.email) {
         alert('Please fill all required fields!');
         return;
     }
 
-    // Show success message
-    alert('Registration submitted successfully! We will contact you soon.');
+    // Validate paper topic if paper presentation is selected
+    if (data.event === 'paper' && !data.paper_topic) {
+        alert('Please select a paper presentation topic!');
+        return;
+    }
+
+    // Get event name for confirmation
+    const eventNames = {
+        'paper': 'Paper Presentation',
+        'technical': 'Technical Event',
+        'non-technical': 'Non-Technical Event',
+        'project': 'Project Expo'
+    };
+    const selectedEventName = eventNames[data.event] || data.event;
+    const paperTopicText = data.paper_topic ? ` (Topic: ${data.paper_topic})` : '';
+
+    // Simulate sending confirmation Email and SMS
+    const confirmationMessage = `You are selected to participate in ${selectedEventName}${paperTopicText} at Vyugam'26 – AVS Engineering College.
+
+Event Details:
+Name: ${data.name}
+Department: ${data.department.toUpperCase()}
+Event: ${selectedEventName}${paperTopicText}
+Event Date: 6 March 2026
+College: ${data.college}
+
+We will send confirmation to:
+Email: ${data.email}
+Mobile: ${data.mobile}
+
+Thank you for registering!`;
+
+    // Show confirmation
+    alert(confirmationMessage);
+
+    // Log for demonstration (in production, this would send actual email/SMS)
+    console.log('📧 Email Confirmation Sent to:', data.email);
+    console.log('📱 SMS Confirmation Sent to:', data.mobile);
+    console.log('Registration Data:', data);
+
+    // Reset form
     registerForm.reset();
+    paperTopicField.style.display = 'none';
+    paperTopicSelect.required = false;
 
     // Scroll to home
     document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
 });
-
-// Prevent default form submission on file input
-const fileInput = registerForm.querySelector('input[type="file"]');
-if (fileInput) {
-    fileInput.addEventListener('change', (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            console.log('Payment screenshot uploaded:', file.name);
-        }
-    });
-}
 
 // Add touch feedback for mobile
 const touchElements = document.querySelectorAll('.dept-item, .btn-primary, .btn-submit, .nav-item');

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Vyugam'26 - AVS Engineering College</title>
     <meta name="description"
         content="Vyugam'26 - National Level Technical Symposium at AVS Engineering College. Win prizes up to ₹1 Lakh!">
@@ -67,33 +67,6 @@
             <div class="prize-box">
                 <div class="prize-icon">🏆</div>
                 <div class="prize-text">Win Exciting Prizes up to <span class="prize-amount">₹1 Lakh</span></div>
-            </div>
-
-            <!-- QR Code -->
-            <div class="qr-container">
-                <div class="qr-code">
-                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="200" height="200" fill="#fff" />
-                        <rect x="20" y="20" width="50" height="50" fill="#000" />
-                        <rect x="130" y="20" width="50" height="50" fill="#000" />
-                        <rect x="20" y="130" width="50" height="50" fill="#000" />
-                        <rect x="30" y="30" width="30" height="30" fill="#fff" />
-                        <rect x="140" y="30" width="30" height="30" fill="#fff" />
-                        <rect x="30" y="140" width="30" height="30" fill="#fff" />
-                        <rect x="40" y="40" width="10" height="10" fill="#000" />
-                        <rect x="150" y="40" width="10" height="10" fill="#000" />
-                        <rect x="40" y="150" width="10" height="10" fill="#000" />
-                        <rect x="80" y="20" width="10" height="10" fill="#000" />
-                        <rect x="100" y="30" width="10" height="10" fill="#000" />
-                        <rect x="20" y="80" width="10" height="10" fill="#000" />
-                        <rect x="60" y="80" width="10" height="10" fill="#000" />
-                        <rect x="130" y="80" width="10" height="10" fill="#000" />
-                        <rect x="170" y="80" width="10" height="10" fill="#000" />
-                        <rect x="80" y="130" width="10" height="10" fill="#000" />
-                        <rect x="100" y="150" width="10" height="10" fill="#000" />
-                    </svg>
-                </div>
-                <p class="qr-label">Scan to Register</p>
             </div>
 
             <!-- CTA Button -->
@@ -189,7 +162,7 @@
                     <option value="eee">EEE</option>
                     <option value="mech">Mechanical</option>
                     <option value="civil">Civil</option>
-                    <option value="sh">S&H</option>
+                    <option value="sh">S&H(1styear)</option>
                     <option value="mba">MBA</option>
                     <option value="bme">BME</option>
                 </select>
@@ -224,15 +197,17 @@
             </div>
         </div>
 
-        <!-- Row 4: Email & Payment Screenshot -->
+        <!-- Row 4: Email & Paper Topic (Dynamic) -->
         <div class="form-row">
             <div class="form-field">
                 <label>Email</label>
                 <input type="email" name="email" placeholder="your@email.com" required>
             </div>
-            <div class="form-field">
-                <label>Payment Screenshot</label>
-                <input type="file" name="payment" accept="image/*" class="file-input">
+            <div class="form-field" id="paperTopicField" style="display: none;">
+                <label>Paper Topic</label>
+                <select name="paper_topic" id="paperTopicSelect">
+                    <option value="">Select Topic</option>
+                </select>
             </div>
         </div>
 
@@ -278,6 +253,20 @@
             <div id="modalBody"></div>
         </div>
     </div>
+
+    <!-- Contact Us Section -->
+    <section id="contact" class="contact-section">
+        <div class="contact-container">
+            <h2 class="contact-title">Contact Us</h2>
+            <div class="contact-info">
+                <p><strong>AVS Engineering College</strong></p>
+                <p>Military Road, Ammapet</p>
+                <p>Salem – 636 003, Tamil Nadu</p>
+                <p>📧 Email: <a href="mailto:symposium@avscollege.edu">symposium@avscollege.edu</a></p>
+                <p>📞 Mobile: +91 427 405 1111</p>
+            </div>
+        </div>
+    </section>
 
     <!-- Minimal Footer -->
     <footer class="footer">
