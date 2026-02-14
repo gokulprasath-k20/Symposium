@@ -436,6 +436,15 @@ body {
     font-weight: 700;
     color: var(--cyan);
     text-align: center;
+    line-height: 1.3;
+}
+
+.dept-subtitle {
+    font-size: 0.65rem;
+    font-weight: 500;
+    color: var(--gray);
+    display: block;
+    margin-top: 2px;
 }
 
 /* ===== REGISTRATION PAGE - COMPACT FORM ===== */
@@ -1023,6 +1032,10 @@ body {
 
     .dept-name {
         font-size: 1rem;
+    }
+
+    .dept-subtitle {
+        font-size: 0.75rem;
     }
 
     .register-form {
