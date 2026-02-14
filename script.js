@@ -1,7 +1,7 @@
 // Department Data
 const departmentData = {
     cse: {
-        name: "Department of Computer Science & Engineering",
+        name: "Computer Science & Engineering",
         icon: "💻",
         paperTopics: [
             "Serverless Computing",
@@ -13,7 +13,7 @@ const departmentData = {
         nonTechnicalEvents: ["Logo Puzzle"]
     },
     it: {
-        name: "Department of Information Technology",
+        name: "Information Technology",
         icon: "🌐",
         paperTopics: [
             "AI & ML Application",
@@ -25,7 +25,7 @@ const departmentData = {
         nonTechnicalEvents: ["Ad-Zap"]
     },
     aids: {
-        name: "Department of AI & Data Science / MCA",
+        name: "AI & Data Science / MCA",
         icon: "🤖",
         paperTopics: [
             "Agentic AI",
@@ -37,7 +37,7 @@ const departmentData = {
         nonTechnicalEvents: ["AI Memes & Ad Mad"]
     },
     ece: {
-        name: "Department of Electronics & Communication Engineering",
+        name: "Electronics & Communication Engineering",
         icon: "📡",
         paperTopics: [
             "6G Technology",
@@ -50,7 +50,7 @@ const departmentData = {
         nonTechnicalEvents: ["Ad-Zap"]
     },
     eee: {
-        name: "Department of Electrical & Electronics Engineering",
+        name: "Electrical & Electronics Engineering",
         icon: "⚡",
         paperTopics: [
             "Electrical Vehicles (EVs)",
@@ -63,7 +63,7 @@ const departmentData = {
         nonTechnicalEvents: ["Electro Hunt"]
     },
     mech: {
-        name: "Department of Mechanical Engineering",
+        name: "Mechanical Engineering",
         icon: "⚙️",
         paperTopics: [
             "Green Energy",
@@ -77,7 +77,7 @@ const departmentData = {
         nonTechnicalEvents: ["Drone Flying"]
     },
     civil: {
-        name: "Department of Civil Engineering",
+        name: "Civil Engineering",
         icon: "🏗️",
         paperTopics: [
             "Green Building Design",
@@ -89,7 +89,7 @@ const departmentData = {
         nonTechnicalEvents: ["Code Cracking"]
     },
     sh: {
-        name: "Department of Science & Humanities",
+        name: "Science & Humanities",
         icon: "📚",
         paperTopics: [
             "Language, Technology and Transformation",
@@ -102,7 +102,7 @@ const departmentData = {
         nonTechnicalEvents: ["Just a Minute", "Short Film"]
     },
     mba: {
-        name: "Department of MBA",
+        name: "MBA",
         icon: "💼",
         paperTopics: [
             "AI in Business",
@@ -114,7 +114,7 @@ const departmentData = {
         technicalEvents: ["Business Quiz", "Best Manager"]
     },
     bme: {
-        name: "Department of Biomedical Engineering",
+        name: "Biomedical Engineering",
         icon: "🧬",
         paperTopics: [
             "Advanced Image / Signal Processing",
@@ -130,69 +130,56 @@ const departmentData = {
 };
 
 // Navigation
-const navbar = document.getElementById('navbar');
-const hamburger = document.getElementById('hamburger');
-const navIcons = document.getElementById('navIcons');
-const navIconElements = document.querySelectorAll('.nav-icon');
+const navItems = document.querySelectorAll('.nav-item');
+const sections = document.querySelectorAll('.page');
 
-// Hamburger menu toggle (if needed for very small screens)
-if (hamburger) {
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navIcons.classList.toggle('active');
-    });
-}
+// Smooth scroll and active state
+navItems.forEach(item => {
+    item.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = item.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetId);
 
-// Close mobile menu when clicking a link
-navIconElements.forEach(link => {
-    link.addEventListener('click', () => {
-        if (hamburger) {
-            hamburger.classList.remove('active');
-            navIcons.classList.remove('active');
+        if (targetSection) {
+            targetSection.scrollIntoView({ behavior: 'smooth' });
         }
+
+        // Update active state
+        navItems.forEach(nav => nav.classList.remove('active'));
+        item.classList.add('active');
     });
 });
 
-// Navbar scroll effect
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 100) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-});
-
-// Active navigation link on scroll
-const sections = document.querySelectorAll('section');
-
+// Update active nav on scroll
 window.addEventListener('scroll', () => {
     let current = '';
+
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
-        if (window.scrollY >= sectionTop - 200) {
+        if (window.scrollY >= sectionTop - 100) {
             current = section.getAttribute('id');
         }
     });
 
-    navIconElements.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
+    navItems.forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('href') === `#${current}`) {
+            item.classList.add('active');
         }
     });
 });
 
-// Department Cards Click Handler
-const deptCards = document.querySelectorAll('.dept-card-mobile');
+// Department Cards
+const deptItems = document.querySelectorAll('.dept-item');
 const modal = document.getElementById('deptModal');
-const modalOverlay = document.getElementById('modalOverlay');
+const modalOverlay = modal.querySelector('.modal-overlay');
 const modalClose = document.getElementById('modalClose');
 const modalBody = document.getElementById('modalBody');
 
-deptCards.forEach(card => {
-    card.addEventListener('click', () => {
-        const deptKey = card.getAttribute('data-dept');
+deptItems.forEach(item => {
+    item.addEventListener('click', () => {
+        const deptKey = item.getAttribute('data-dept');
         const dept = departmentData[deptKey];
 
         if (dept) {
@@ -204,7 +191,7 @@ deptCards.forEach(card => {
 function showDepartmentModal(dept) {
     let modalContent = `
         <div class="modal-header">
-            <div style="font-size: 4rem; margin-bottom: 20px;">${dept.icon}</div>
+            <div class="dept-icon-large">${dept.icon}</div>
             <h2>${dept.name}</h2>
         </div>
     `;
@@ -277,156 +264,52 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// Contact Form Handler
-const contactForm = document.getElementById('contactForm');
+// Registration Form
+const registerForm = document.getElementById('registerForm');
 
-contactForm.addEventListener('submit', (e) => {
+registerForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    // Simple form validation and submission
-    const formData = new FormData(contactForm);
+    // Get form data
+    const formData = new FormData(registerForm);
+    const data = Object.fromEntries(formData);
 
-    // Show success message (you can replace this with actual form submission)
-    alert('Thank you for your message! We will get back to you soon.');
-    contactForm.reset();
+    // Simple validation
+    if (!data.name || !data.college || !data.department || !data.mobile || !data.event) {
+        alert('Please fill all required fields!');
+        return;
+    }
+
+    // Show success message
+    alert('Registration submitted successfully! We will contact you soon.');
+    registerForm.reset();
+
+    // Scroll to home
+    document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
 });
 
-// Smooth scroll for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            const offsetTop = target.offsetTop - 80;
-            window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
-            });
+// Prevent default form submission on file input
+const fileInput = registerForm.querySelector('input[type="file"]');
+if (fileInput) {
+    fileInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            console.log('Payment screenshot uploaded:', file.name);
         }
-    });
-});
-
-// Intersection Observer for fade-in animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
-
-// Observe department cards (simplified for mobile)
-deptCards.forEach(card => {
-    observer.observe(card);
-});
-
-// Parallax effect for hero orbs (disabled on mobile for performance)
-if (window.innerWidth > 768) {
-    window.addEventListener('mousemove', (e) => {
-        const orbs = document.querySelectorAll('.gradient-orb');
-        const mouseX = e.clientX / window.innerWidth;
-        const mouseY = e.clientY / window.innerHeight;
-        orbs.forEach((orb, index) => {
-            const speed = (index + 1) * 20;
-            const x = (mouseX - 0.5) * speed;
-            const y = (mouseY - 0.5) * speed;
-            orb.style.transform = `translate(${x}px, ${y}px)`;
-        });
     });
 }
 
-// Simplified loading (no animation for performance)
-window.addEventListener('load', () => {
-    document.body.style.opacity = '1';
-});
+// Add touch feedback for mobile
+const touchElements = document.querySelectorAll('.dept-item, .btn-primary, .btn-submit, .nav-item');
 
-// Counter animation for numbers
-function animateCounter(element, target, duration = 2000) {
-    let start = 0;
-    const increment = target / (duration / 16);
-
-    const timer = setInterval(() => {
-        start += increment;
-        if (start >= target) {
-            element.textContent = target;
-            clearInterval(timer);
-        } else {
-            element.textContent = Math.floor(start);
-        }
-    }, 16);
-}
-
-// Trigger counter animation when registration section is visible
-const registrationSection = document.querySelector('.registration');
-let counterAnimated = false;
-
-const registrationObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting && !counterAnimated) {
-            counterAnimated = true;
-            // You can add counter animations here if needed
-        }
+touchElements.forEach(element => {
+    element.addEventListener('touchstart', () => {
+        element.style.opacity = '0.7';
     });
-}, { threshold: 0.3 });
 
-if (registrationSection) {
-    registrationObserver.observe(registrationSection);
-}
-
-// Add ripple effect to buttons
-const buttons = document.querySelectorAll('.btn');
-
-buttons.forEach(button => {
-    button.addEventListener('click', function (e) {
-        const ripple = document.createElement('span');
-        const rect = this.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height);
-        const x = e.clientX - rect.left - size / 2;
-        const y = e.clientY - rect.top - size / 2;
-
-        ripple.style.width = ripple.style.height = size + 'px';
-        ripple.style.left = x + 'px';
-        ripple.style.top = y + 'px';
-        ripple.classList.add('ripple');
-
-        this.appendChild(ripple);
-
-        setTimeout(() => {
-            ripple.remove();
-        }, 600);
+    element.addEventListener('touchend', () => {
+        element.style.opacity = '1';
     });
 });
 
-// Add CSS for ripple effect dynamically
-const style = document.createElement('style');
-style.textContent = `
-    .btn {
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .ripple {
-        position: absolute;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.3);
-        transform: scale(0);
-        animation: ripple-animation 0.6s ease-out;
-        pointer-events: none;
-    }
-    
-    @keyframes ripple-animation {
-        to {
-            transform: scale(4);
-            opacity: 0;
-        }
-    }
-`;
-document.head.appendChild(style);
-
-console.log('🎉 Vyugam\'26 Website Loaded Successfully!');
+console.log('✅ Vyugam\'26 - Mobile-First Website Loaded Successfully!');

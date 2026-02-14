@@ -4,92 +4,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>Vyugam'26 - AVS Engineering College National Technical Symposium</title>
+    <title>Vyugam'26 - AVS Engineering College</title>
     <meta name="description"
-        content="Join Vyugam'26, a National Level Technical Symposium at AVS Engineering College. Win prizes up to ₹1 Lakh. Register now!">
+        content="Vyugam'26 - National Level Technical Symposium at AVS Engineering College. Win prizes up to ₹1 Lakh!">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;900&family=Inter:wght@400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <!-- Compact Mobile-First Navigation -->
+    <!-- Minimal Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <div class="logo">
-                <span class="logo-text">VYUGAM'26</span>
-            </div>
-            <div class="nav-icons" id="navIcons">
-                <a href="#home" class="nav-icon" title="Home">
-                    <span class="icon">🏠</span>
-                    <span class="icon-label">Home</span>
+            <div class="logo">VYUGAM'26</div>
+            <div class="nav-menu">
+                <a href="#home" class="nav-item active">
+                    <span class="nav-icon">🏠</span>
+                    <span class="nav-text">Home</span>
                 </a>
-                <a href="#departments" class="nav-icon" title="Departments">
-                    <span class="icon">📚</span>
-                    <span class="icon-label">Depts</span>
+                <a href="#departments" class="nav-item">
+                    <span class="nav-icon">📚</span>
+                    <span class="nav-text">Depts</span>
                 </a>
-                <a href="#registration" class="nav-icon" title="Registration">
-                    <span class="icon">📝</span>
-                    <span class="icon-label">Register</span>
+                <a href="#register" class="nav-item">
+                    <span class="nav-icon">📝</span>
+                    <span class="nav-text">Register</span>
                 </a>
-                <a href="#contact" class="nav-icon" title="Contact">
-                    <span class="icon">📞</span>
-                    <span class="icon-label">Contact</span>
-                </a>
-            </div>
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
             </div>
         </div>
     </nav>
 
-    <!-- Mobile-First Hero Section - Fits in One Screen -->
-    <section id="home" class="hero">
-        <div class="hero-background">
-            <div class="gradient-orb orb-1"></div>
-            <div class="gradient-orb orb-2"></div>
-        </div>
-        <div class="hero-content">
-            <!-- Compact Title -->
-            <h1 class="hero-title">
-                <span class="college-name">AVS Engineering College</span>
-                <span class="event-name">Vyugam'26</span>
-            </h1>
-            <p class="hero-subtitle">National Level Technical Symposium</p>
+    <!-- HOME PAGE - Fits in One Screen -->
+    <section id="home" class="page home-page">
+        <div class="home-container">
+            <!-- Title -->
+            <h1 class="main-title">Vyugam'26</h1>
+            <h2 class="college-title">AVS Engineering College</h2>
+            <p class="subtitle">A National Level Technical Symposium</p>
 
-            <!-- Compact Info Grid -->
-            <div class="info-grid">
-                <div class="info-item">
+            <!-- Quick Info Grid -->
+            <div class="quick-info">
+                <div class="info-box">
                     <div class="info-icon">📅</div>
-                    <div class="info-details">
+                    <div class="info-content">
                         <div class="info-value">6 March 2026</div>
                         <div class="info-label">Event Date</div>
                     </div>
                 </div>
-                <div class="info-item">
+                <div class="info-box">
                     <div class="info-icon">💰</div>
-                    <div class="info-details">
+                    <div class="info-content">
                         <div class="info-value">₹200</div>
                         <div class="info-label">Registration</div>
                     </div>
                 </div>
-                <div class="info-item">
-                    <div class="info-icon">🏆</div>
-                    <div class="info-details">
-                        <div class="info-value">₹1 Lakh</div>
-                        <div class="info-label">Prize Pool</div>
-                    </div>
-                </div>
             </div>
 
-            <!-- Compact QR Code Section -->
-            <div class="qr-section-compact">
-                <div class="qr-code-small">
+            <!-- Prize Section -->
+            <div class="prize-box">
+                <div class="prize-icon">🏆</div>
+                <div class="prize-text">Win Exciting Prizes up to <span class="prize-amount">₹1 Lakh</span></div>
+            </div>
+
+            <!-- QR Code -->
+            <div class="qr-container">
+                <div class="qr-code">
                     <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                         <rect width="200" height="200" fill="#fff" />
                         <rect x="20" y="20" width="50" height="50" fill="#000" />
@@ -102,251 +84,152 @@
                         <rect x="150" y="40" width="10" height="10" fill="#000" />
                         <rect x="40" y="150" width="10" height="10" fill="#000" />
                         <rect x="80" y="20" width="10" height="10" fill="#000" />
-                        <rect x="100" y="20" width="10" height="10" fill="#000" />
-                        <rect x="80" y="40" width="10" height="10" fill="#000" />
+                        <rect x="100" y="30" width="10" height="10" fill="#000" />
                         <rect x="20" y="80" width="10" height="10" fill="#000" />
-                        <rect x="40" y="80" width="10" height="10" fill="#000" />
                         <rect x="60" y="80" width="10" height="10" fill="#000" />
                         <rect x="130" y="80" width="10" height="10" fill="#000" />
-                        <rect x="150" y="80" width="10" height="10" fill="#000" />
                         <rect x="170" y="80" width="10" height="10" fill="#000" />
                         <rect x="80" y="130" width="10" height="10" fill="#000" />
                         <rect x="100" y="150" width="10" height="10" fill="#000" />
-                        <rect x="130" y="170" width="10" height="10" fill="#000" />
                     </svg>
                 </div>
-                <p class="qr-text">Scan to Register</p>
+                <p class="qr-label">Scan to Register</p>
             </div>
 
-            <!-- Compact CTA -->
-            <div class="cta-compact">
-                <a href="#registration" class="btn-compact btn-primary">Register Now</a>
-                <a href="#departments" class="btn-compact btn-secondary">View Departments</a>
-            </div>
+            <!-- CTA Button -->
+            <a href="#register" class="btn-primary">Register Now</a>
         </div>
     </section>
 
-    <!-- Mobile-Optimized Departments Section -->
-    <section id="departments" class="departments">
-        <div class="container">
-            <h2 class="section-title">Departments</h2>
+    <!-- DEPARTMENTS PAGE - 2 Column Grid -->
+    <section id="departments" class="page dept-page">
+        <div class="page-container">
+            <h2 class="page-title">Departments</h2>
 
-            <div class="departments-grid-mobile">
-                <div class="dept-card-mobile" data-dept="cse">
-                    <div class="dept-icon-mobile">💻</div>
-                    <h3>CSE</h3>
+            <div class="dept-grid">
+                <div class="dept-item" data-dept="cse">
+                    <div class="dept-icon">💻</div>
+                    <div class="dept-name">CSE</div>
                 </div>
-
-                <div class="dept-card-mobile" data-dept="it">
-                    <div class="dept-icon-mobile">🌐</div>
-                    <h3>IT</h3>
+                <div class="dept-item" data-dept="it">
+                    <div class="dept-icon">🌐</div>
+                    <div class="dept-name">IT</div>
                 </div>
-
-                <div class="dept-card-mobile" data-dept="aids">
-                    <div class="dept-icon-mobile">🤖</div>
-                    <h3>AI & DS</h3>
+                <div class="dept-item" data-dept="aids">
+                    <div class="dept-icon">🤖</div>
+                    <div class="dept-name">AI & DS</div>
                 </div>
-
-                <div class="dept-card-mobile" data-dept="ece">
-                    <div class="dept-icon-mobile">📡</div>
-                    <h3>ECE</h3>
+                <div class="dept-item" data-dept="ece">
+                    <div class="dept-icon">📡</div>
+                    <div class="dept-name">ECE</div>
                 </div>
-
-                <div class="dept-card-mobile" data-dept="eee">
-                    <div class="dept-icon-mobile">⚡</div>
-                    <h3>EEE</h3>
+                <div class="dept-item" data-dept="eee">
+                    <div class="dept-icon">⚡</div>
+                    <div class="dept-name">EEE</div>
                 </div>
-
-                <div class="dept-card-mobile" data-dept="mech">
-                    <div class="dept-icon-mobile">⚙️</div>
-                    <h3>Mech</h3>
+                <div class="dept-item" data-dept="mech">
+                    <div class="dept-icon">⚙️</div>
+                    <div class="dept-name">Mech</div>
                 </div>
-
-                <div class="dept-card-mobile" data-dept="civil">
-                    <div class="dept-icon-mobile">🏗️</div>
-                    <h3>Civil</h3>
+                <div class="dept-item" data-dept="civil">
+                    <div class="dept-icon">🏗️</div>
+                    <div class="dept-name">Civil</div>
                 </div>
-
-                <div class="dept-card-mobile" data-dept="sh">
-                    <div class="dept-icon-mobile">📚</div>
-                    <h3>S&H</h3>
+                <div class="dept-item" data-dept="sh">
+                    <div class="dept-icon">📚</div>
+                    <div class="dept-name">S&H</div>
                 </div>
-
-                <div class="dept-card-mobile" data-dept="mba">
-                    <div class="dept-icon-mobile">💼</div>
-                    <h3>MBA</h3>
+                <div class="dept-item" data-dept="mba">
+                    <div class="dept-icon">💼</div>
+                    <div class="dept-name">MBA</div>
                 </div>
-
-                <div class="dept-card-mobile" data-dept="bme">
-                    <div class="dept-icon-mobile">🧬</div>
-                    <h3>BME</h3>
+                <div class="dept-item" data-dept="bme">
+                    <div class="dept-icon">🧬</div>
+                    <div class="dept-name">BME</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Department Details Modal -->
+    <!-- REGISTRATION PAGE - Compact Form -->
+    <section id="register" class="page register-page">
+        <div class="page-container">
+            <h2 class="page-title">Registration</h2>
+
+            <form class="register-form" id="registerForm">
+                <div class="form-row">
+                    <div class="form-field">
+                        <label>Name</label>
+                        <input type="text" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-field">
+                        <label>College</label>
+                        <input type="text" name="college" placeholder="College Name" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-field">
+                        <label>Department</label>
+                        <select name="department" required>
+                            <option value="">Select Dept</option>
+                            <option value="cse">CSE</option>
+                            <option value="it">IT</option>
+                            <option value="aids">AI & DS / MCA</option>
+                            <option value="ece">ECE</option>
+                            <option value="eee">EEE</option>
+                            <option value="mech">Mechanical</option>
+                            <option value="civil">Civil</option>
+                            <option value="sh">S&H</option>
+                            <option value="mba">MBA</option>
+                            <option value="bme">BME</option>
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <label>Mobile</label>
+                        <input type="tel" name="mobile" placeholder="Mobile Number" required>
+                    </div>
+                </div>
+
+                <div class="form-field full-width">
+                    <label>Event</label>
+                    <select name="event" required>
+                        <option value="">Select Event</option>
+                        <option value="paper">Paper Presentation</option>
+                        <option value="technical">Technical Event</option>
+                        <option value="non-technical">Non-Technical Event</option>
+                        <option value="project">Project Expo</option>
+                    </select>
+                </div>
+
+                <div class="form-field full-width">
+                    <label>Payment Screenshot</label>
+                    <input type="file" name="payment" accept="image/*" required>
+                </div>
+
+                <button type="submit" class="btn-submit">Submit Registration</button>
+            </form>
+
+            <div class="payment-info">
+                <p>Registration Fee: <strong>₹200</strong></p>
+                <p>UPI ID: symposium@avs</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Department Modal -->
     <div class="modal" id="deptModal">
-        <div class="modal-overlay" id="modalOverlay"></div>
+        <div class="modal-overlay"></div>
         <div class="modal-content">
             <button class="modal-close" id="modalClose">&times;</button>
             <div id="modalBody"></div>
         </div>
     </div>
 
-    <!-- Registration Section -->
-    <section id="registration" class="registration">
-        <div class="container">
-            <h2 class="section-title">Registration <span class="highlight">Details</span></h2>
-
-            <div class="registration-grid">
-                <div class="registration-info">
-                    <div class="timeline-card">
-                        <div class="timeline-icon">📝</div>
-                        <h3>Last Date for Submission</h3>
-                        <p class="timeline-date">25 February 2026</p>
-                    </div>
-
-                    <div class="timeline-card">
-                        <div class="timeline-icon">✅</div>
-                        <h3>Acceptance & Intimation</h3>
-                        <p class="timeline-date">1 March 2026</p>
-                    </div>
-
-                    <div class="timeline-card">
-                        <div class="timeline-icon">🎉</div>
-                        <h3>Event Date</h3>
-                        <p class="timeline-date">6 March 2026</p>
-                    </div>
-
-                    <div class="fee-card">
-                        <h3>Registration Fee</h3>
-                        <div class="fee-amount">₹200</div>
-                        <p>Per Participant</p>
-                    </div>
-
-                    <div class="prize-card">
-                        <h3>Win Exciting Prizes</h3>
-                        <div class="prize-amount">Up to ₹1 Lakh</div>
-                    </div>
-                </div>
-
-                <div class="qr-section">
-                    <div class="qr-card">
-                        <h3>Spot Registration</h3>
-                        <p>Scan the QR code below for instant registration</p>
-                        <div class="qr-placeholder">
-                            <div class="qr-code">
-                                <!-- QR Code placeholder -->
-                                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                                    <rect width="200" height="200" fill="#fff" />
-                                    <rect x="20" y="20" width="50" height="50" fill="#000" />
-                                    <rect x="130" y="20" width="50" height="50" fill="#000" />
-                                    <rect x="20" y="130" width="50" height="50" fill="#000" />
-                                    <rect x="30" y="30" width="30" height="30" fill="#fff" />
-                                    <rect x="140" y="30" width="30" height="30" fill="#fff" />
-                                    <rect x="30" y="140" width="30" height="30" fill="#fff" />
-                                    <rect x="40" y="40" width="10" height="10" fill="#000" />
-                                    <rect x="150" y="40" width="10" height="10" fill="#000" />
-                                    <rect x="40" y="150" width="10" height="10" fill="#000" />
-                                    <!-- Additional QR pattern elements -->
-                                    <rect x="80" y="20" width="10" height="10" fill="#000" />
-                                    <rect x="100" y="20" width="10" height="10" fill="#000" />
-                                    <rect x="80" y="40" width="10" height="10" fill="#000" />
-                                    <rect x="20" y="80" width="10" height="10" fill="#000" />
-                                    <rect x="40" y="80" width="10" height="10" fill="#000" />
-                                    <rect x="60" y="80" width="10" height="10" fill="#000" />
-                                    <rect x="130" y="80" width="10" height="10" fill="#000" />
-                                    <rect x="150" y="80" width="10" height="10" fill="#000" />
-                                    <rect x="170" y="80" width="10" height="10" fill="#000" />
-                                    <rect x="80" y="130" width="10" height="10" fill="#000" />
-                                    <rect x="100" y="150" width="10" height="10" fill="#000" />
-                                    <rect x="130" y="170" width="10" height="10" fill="#000" />
-                                </svg>
-                            </div>
-                            <p class="qr-label">Scan to Register</p>
-                        </div>
-                        <a href="#" class="btn btn-primary">Register Online</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Get in <span class="highlight">Touch</span></h2>
-
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3>AVS Engineering College</h3>
-                    <div class="contact-item">
-                        <div class="contact-icon">📍</div>
-                        <div>
-                            <strong>Address:</strong><br>
-                            AVS Engineering College<br>
-                            Salem - Kochi Highway,<br>
-                            Ammapet, Salem - 636003<br>
-                            Tamil Nadu, India
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">📞</div>
-                        <div>
-                            <strong>Phone:</strong><br>
-                            +91 427 405 1111
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">✉️</div>
-                        <div>
-                            <strong>Email:</strong><br>
-                            vyugam26@avsec.edu.in
-                        </div>
-                    </div>
-                </div>
-
-                <div class="contact-form-container">
-                    <form class="contact-form" id="contactForm">
-                        <div class="form-group">
-                            <input type="text" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" placeholder="Your Phone" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea placeholder="Your Message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
+    <!-- Minimal Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <h3>VYUGAM'26</h3>
-                    <p>National Level Technical Symposium</p>
-                </div>
-                <div class="footer-links">
-                    <a href="#home">Home</a>
-                    <a href="#departments">Departments</a>
-                    <a href="#registration">Registration</a>
-                    <a href="#contact">Contact</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 AVS Engineering College. All rights reserved.</p>
-            </div>
-        </div>
+        <p><strong>AVS Engineering College</strong></p>
+        <p>📧 vyugam26@avsec.edu.in | 📞 +91 427 405 1111</p>
     </footer>
 
     <script src="script.js"></script>
