@@ -10,7 +10,11 @@ const departmentData = {
             "DevSecOps: Security in DevOps"
         ],
         technicalEvents: ["Blind Coding"],
-        nonTechnicalEvents: ["Logo Puzzle"]
+        nonTechnicalEvents: ["Logo Puzzle"],
+        contact: {
+            staff: { name: "Dr. S. Rajkumar", mobile: "+91 98765 43210" },
+            student: { name: "Arun Kumar", mobile: "+91 87654 32109" }
+        }
     },
     it: {
         name: "Information Technology",
@@ -22,7 +26,11 @@ const departmentData = {
             "Digital Twins Technology"
         ],
         technicalEvents: ["Appathon (App Development)"],
-        nonTechnicalEvents: ["Ad-Zap"]
+        nonTechnicalEvents: ["Ad-Zap"],
+        contact: {
+            staff: { name: "Dr. M. Priya", mobile: "+91 98765 43211" },
+            student: { name: "Divya Lakshmi", mobile: "+91 87654 32110" }
+        }
     },
     aids: {
         name: "AI & Data Science / MCA",
@@ -34,7 +42,11 @@ const departmentData = {
             "Auto ML"
         ],
         technicalEvents: ["Vibe Coding"],
-        nonTechnicalEvents: ["AI Memes & Ad Mad"]
+        nonTechnicalEvents: ["AI Memes & Ad Mad"],
+        contact: {
+            staff: { name: "Dr. K. Venkatesh", mobile: "+91 98765 43212" },
+            student: { name: "Karthik Raj", mobile: "+91 87654 32111" }
+        }
     },
     ece: {
         name: "Electronics & Communication Engineering",
@@ -47,7 +59,11 @@ const departmentData = {
         ],
         projectExpo: ["ElectroXhibit"],
         technicalEvents: ["Quizathon"],
-        nonTechnicalEvents: ["Ad-Zap"]
+        nonTechnicalEvents: ["Ad-Zap"],
+        contact: {
+            staff: { name: "Dr. P. Selvam", mobile: "+91 98765 43213" },
+            student: { name: "Ramesh Babu", mobile: "+91 87654 32112" }
+        }
     },
     eee: {
         name: "Electrical & Electronics Engineering",
@@ -60,7 +76,11 @@ const departmentData = {
         ],
         projectExpo: ["Spark Expo"],
         technicalEvents: ["Project Expo"],
-        nonTechnicalEvents: ["Electro Hunt"]
+        nonTechnicalEvents: ["Electro Hunt"],
+        contact: {
+            staff: { name: "Dr. R. Anitha", mobile: "+91 98765 43214" },
+            student: { name: "Suresh Kumar", mobile: "+91 87654 32113" }
+        }
     },
     mech: {
         name: "Mechanical Engineering",
@@ -74,7 +94,11 @@ const departmentData = {
             "Thermal Engineering",
             "Robotics"
         ],
-        nonTechnicalEvents: ["Drone Flying"]
+        nonTechnicalEvents: ["Drone Flying"],
+        contact: {
+            staff: { name: "Dr. N. Balaji", mobile: "+91 98765 43215" },
+            student: { name: "Vijay Anand", mobile: "+91 87654 32114" }
+        }
     },
     civil: {
         name: "Civil Engineering",
@@ -86,7 +110,11 @@ const departmentData = {
             "Sustainable Urban Transportation"
         ],
         technicalEvents: ["Quiz"],
-        nonTechnicalEvents: ["Code Cracking"]
+        nonTechnicalEvents: ["Code Cracking"],
+        contact: {
+            staff: { name: "Dr. L. Saravanan", mobile: "+91 98765 43216" },
+            student: { name: "Manoj Kumar", mobile: "+91 87654 32115" }
+        }
     },
     sh: {
         name: "Science & Humanities",
@@ -98,7 +126,11 @@ const departmentData = {
             "Sustainable Materials in Emerging Technology"
         ],
         technicalEvents: ["Quiz"],
-        nonTechnicalEvents: ["Just a Minute", "Short Film"]
+        nonTechnicalEvents: ["Just a Minute", "Short Film"],
+        contact: {
+            staff: { name: "Dr. T. Lakshmi", mobile: "+91 98765 43217" },
+            student: { name: "Preethi Sharma", mobile: "+91 87654 32116" }
+        }
     },
     mba: {
         name: "MBA",
@@ -110,7 +142,11 @@ const departmentData = {
             "HR Analytics",
             "ESG (Environmental, Social, and Governance)"
         ],
-        technicalEvents: ["Business Quiz", "Best Manager"]
+        technicalEvents: ["Business Quiz", "Best Manager"],
+        contact: {
+            staff: { name: "Dr. A. Ganesh", mobile: "+91 98765 43218" },
+            student: { name: "Sneha Reddy", mobile: "+91 87654 32117" }
+        }
     },
     bme: {
         name: "Biomedical Engineering",
@@ -124,7 +160,11 @@ const departmentData = {
             "Emerging and Future Technology in BME"
         ],
         technicalEvents: ["Project Expo", "Bio Quiz"],
-        nonTechnicalEvents: ["AdZap"]
+        nonTechnicalEvents: ["AdZap"],
+        contact: {
+            staff: { name: "Dr. V. Ramya", mobile: "+91 98765 43219" },
+            student: { name: "Harini Prasad", mobile: "+91 87654 32118" }
+        }
     }
 };
 
@@ -257,6 +297,27 @@ function showDepartmentModal(dept) {
                 <h3>🎯 Non-Technical Events</h3>
                 <div>
                     ${dept.nonTechnicalEvents.map(event => `<span class="event-badge non-tech">${event}</span>`).join('')}
+                </div>
+            </div>
+        `;
+    }
+
+    // Department Contact
+    if (dept.contact) {
+        modalContent += `
+            <div class="dept-contact-section">
+                <h3 class="contact-section-title">📞 Department Contact</h3>
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <h4 class="contact-role">Staff Co-Ordinator</h4>
+                        <p class="contact-name">${dept.contact.staff.name}</p>
+                        <p class="contact-mobile">${dept.contact.staff.mobile}</p>
+                    </div>
+                    <div class="contact-card">
+                        <h4 class="contact-role">Student Co-Ordinator</h4>
+                        <p class="contact-name">${dept.contact.student.name}</p>
+                        <p class="contact-mobile">${dept.contact.student.mobile}</p>
+                    </div>
                 </div>
             </div>
         `;
