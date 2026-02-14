@@ -169,6 +169,25 @@ window.addEventListener('scroll', () => {
     });
 });
 
+// Register Now Button - Smooth Navigation
+const registerBtn = document.getElementById('registerBtn');
+if (registerBtn) {
+    registerBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const registerSection = document.getElementById('register');
+        if (registerSection) {
+            registerSection.scrollIntoView({ behavior: 'smooth' });
+
+            // Update active nav state
+            navItems.forEach(nav => nav.classList.remove('active'));
+            const registerNavItem = document.querySelector('.nav-item[href="#register"]');
+            if (registerNavItem) {
+                registerNavItem.classList.add('active');
+            }
+        }
+    });
+}
+
 // Department Cards
 const deptItems = document.querySelectorAll('.dept-item');
 const modal = document.getElementById('deptModal');
