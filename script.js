@@ -132,20 +132,24 @@ const departmentData = {
 // Navigation
 const navbar = document.getElementById('navbar');
 const hamburger = document.getElementById('hamburger');
-const navLinks = document.getElementById('navLinks');
-const navLinkElements = document.querySelectorAll('.nav-link');
+const navIcons = document.getElementById('navIcons');
+const navIconElements = document.querySelectorAll('.nav-icon');
 
-// Hamburger menu toggle
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navLinks.classList.toggle('active');
-});
+// Hamburger menu toggle (if needed for very small screens)
+if (hamburger) {
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navIcons.classList.toggle('active');
+    });
+}
 
 // Close mobile menu when clicking a link
-navLinkElements.forEach(link => {
+navIconElements.forEach(link => {
     link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navLinks.classList.remove('active');
+        if (hamburger) {
+            hamburger.classList.remove('active');
+            navIcons.classList.remove('active');
+        }
     });
 });
 
@@ -171,7 +175,7 @@ window.addEventListener('scroll', () => {
         }
     });
 
-    navLinkElements.forEach(link => {
+    navIconElements.forEach(link => {
         link.classList.remove('active');
         if (link.getAttribute('href') === `#${current}`) {
             link.classList.add('active');
@@ -180,7 +184,7 @@ window.addEventListener('scroll', () => {
 });
 
 // Department Cards Click Handler
-const deptCards = document.querySelectorAll('.dept-card');
+const deptCards = document.querySelectorAll('.dept-card-mobile');
 const modal = document.getElementById('deptModal');
 const modalOverlay = document.getElementById('modalOverlay');
 const modalClose = document.getElementById('modalClose');
@@ -190,7 +194,7 @@ deptCards.forEach(card => {
     card.addEventListener('click', () => {
         const deptKey = card.getAttribute('data-dept');
         const dept = departmentData[deptKey];
-        
+
         if (dept) {
             showDepartmentModal(dept);
         }
@@ -278,10 +282,10 @@ const contactForm = document.getElementById('contactForm');
 
 contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    
+
     // Simple form validation and submission
     const formData = new FormData(contactForm);
-    
+
     // Show success message (you can replace this with actual form submission)
     alert('Thank you for your message! We will get back to you soon.');
     contactForm.reset();
@@ -317,42 +321,36 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe department cards
+// Observe department cards (simplified for mobile)
 deptCards.forEach(card => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(30px)';
-    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     observer.observe(card);
 });
 
-// Parallax effect for hero orbs
-window.addEventListener('mousemove', (e) => {
-    const orbs = document.querySelectorAll('.gradient-orb');
-    const mouseX = e.clientX / window.innerWidth;
-    const mouseY = e.clientY / window.innerHeight;
-    
-    orbs.forEach((orb, index) => {
-        const speed = (index + 1) * 20;
-        const x = (mouseX - 0.5) * speed;
-        const y = (mouseY - 0.5) * speed;
-        orb.style.transform = `translate(${x}px, ${y}px)`;
+// Parallax effect for hero orbs (disabled on mobile for performance)
+if (window.innerWidth > 768) {
+    window.addEventListener('mousemove', (e) => {
+        const orbs = document.querySelectorAll('.gradient-orb');
+        const mouseX = e.clientX / window.innerWidth;
+        const mouseY = e.clientY / window.innerHeight;
+        orbs.forEach((orb, index) => {
+            const speed = (index + 1) * 20;
+            const x = (mouseX - 0.5) * speed;
+            const y = (mouseY - 0.5) * speed;
+            orb.style.transform = `translate(${x}px, ${y}px)`;
+        });
     });
-});
+}
 
-// Add loading animation
+// Simplified loading (no animation for performance)
 window.addEventListener('load', () => {
-    document.body.style.opacity = '0';
-    setTimeout(() => {
-        document.body.style.transition = 'opacity 0.5s ease';
-        document.body.style.opacity = '1';
-    }, 100);
+    document.body.style.opacity = '1';
 });
 
 // Counter animation for numbers
 function animateCounter(element, target, duration = 2000) {
     let start = 0;
     const increment = target / (duration / 16);
-    
+
     const timer = setInterval(() => {
         start += increment;
         if (start >= target) {
@@ -385,20 +383,20 @@ if (registrationSection) {
 const buttons = document.querySelectorAll('.btn');
 
 buttons.forEach(button => {
-    button.addEventListener('click', function(e) {
+    button.addEventListener('click', function (e) {
         const ripple = document.createElement('span');
         const rect = this.getBoundingClientRect();
         const size = Math.max(rect.width, rect.height);
         const x = e.clientX - rect.left - size / 2;
         const y = e.clientY - rect.top - size / 2;
-        
+
         ripple.style.width = ripple.style.height = size + 'px';
         ripple.style.left = x + 'px';
         ripple.style.top = y + 'px';
         ripple.classList.add('ripple');
-        
+
         this.appendChild(ripple);
-        
+
         setTimeout(() => {
             ripple.remove();
         }, 600);

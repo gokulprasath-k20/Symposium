@@ -1,27 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Vyugam'26 - AVS Engineering College National Technical Symposium</title>
-    <meta name="description" content="Join Vyugam'26, a National Level Technical Symposium at AVS Engineering College. Win prizes up to ₹1 Lakh. Register now!">
+    <meta name="description"
+        content="Join Vyugam'26, a National Level Technical Symposium at AVS Engineering College. Win prizes up to ₹1 Lakh. Register now!">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <!-- Navigation -->
+    <!-- Compact Mobile-First Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="logo">
                 <span class="logo-text">VYUGAM'26</span>
             </div>
-            <div class="nav-links" id="navLinks">
-                <a href="#home" class="nav-link active">Home</a>
-                <a href="#departments" class="nav-link">Departments</a>
-                <a href="#registration" class="nav-link">Registration</a>
-                <a href="#contact" class="nav-link">Contact</a>
+            <div class="nav-icons" id="navIcons">
+                <a href="#home" class="nav-icon" title="Home">
+                    <span class="icon">🏠</span>
+                    <span class="icon-label">Home</span>
+                </a>
+                <a href="#departments" class="nav-icon" title="Departments">
+                    <span class="icon">📚</span>
+                    <span class="icon-label">Depts</span>
+                </a>
+                <a href="#registration" class="nav-icon" title="Registration">
+                    <span class="icon">📝</span>
+                    <span class="icon-label">Register</span>
+                </a>
+                <a href="#contact" class="nav-icon" title="Contact">
+                    <span class="icon">📞</span>
+                    <span class="icon-label">Contact</span>
+                </a>
             </div>
             <div class="hamburger" id="hamburger">
                 <span></span>
@@ -31,129 +48,138 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Mobile-First Hero Section - Fits in One Screen -->
     <section id="home" class="hero">
         <div class="hero-background">
-            <div class="grid-overlay"></div>
             <div class="gradient-orb orb-1"></div>
             <div class="gradient-orb orb-2"></div>
-            <div class="gradient-orb orb-3"></div>
         </div>
         <div class="hero-content">
-            <div class="hero-badge">National Level Technical Symposium</div>
+            <!-- Compact Title -->
             <h1 class="hero-title">
-                Welcome to <span class="highlight">AVS Engineering College</span><br>
-                Symposium – <span class="glow">Vyugam'26</span>
+                <span class="college-name">AVS Engineering College</span>
+                <span class="event-name">Vyugam'26</span>
             </h1>
-            <p class="hero-subtitle">A National Level Technical Symposium</p>
-            <div class="hero-info">
-                <div class="info-card">
+            <p class="hero-subtitle">National Level Technical Symposium</p>
+
+            <!-- Compact Info Grid -->
+            <div class="info-grid">
+                <div class="info-item">
                     <div class="info-icon">📅</div>
-                    <div class="info-text">
-                        <div class="info-label">Event Date</div>
+                    <div class="info-details">
                         <div class="info-value">6 March 2026</div>
+                        <div class="info-label">Event Date</div>
                     </div>
                 </div>
-                <div class="info-card">
-                    <div class="info-icon">🏆</div>
-                    <div class="info-text">
-                        <div class="info-label">Prize Pool</div>
-                        <div class="info-value">Up to ₹1 Lakh</div>
-                    </div>
-                </div>
-                <div class="info-card">
+                <div class="info-item">
                     <div class="info-icon">💰</div>
-                    <div class="info-text">
-                        <div class="info-label">Registration Fee</div>
+                    <div class="info-details">
                         <div class="info-value">₹200</div>
+                        <div class="info-label">Registration</div>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">🏆</div>
+                    <div class="info-details">
+                        <div class="info-value">₹1 Lakh</div>
+                        <div class="info-label">Prize Pool</div>
                     </div>
                 </div>
             </div>
-            <div class="cta-buttons">
-                <a href="#registration" class="btn btn-primary">Register Now</a>
-                <a href="#departments" class="btn btn-secondary">Explore Departments</a>
+
+            <!-- Compact QR Code Section -->
+            <div class="qr-section-compact">
+                <div class="qr-code-small">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="200" height="200" fill="#fff" />
+                        <rect x="20" y="20" width="50" height="50" fill="#000" />
+                        <rect x="130" y="20" width="50" height="50" fill="#000" />
+                        <rect x="20" y="130" width="50" height="50" fill="#000" />
+                        <rect x="30" y="30" width="30" height="30" fill="#fff" />
+                        <rect x="140" y="30" width="30" height="30" fill="#fff" />
+                        <rect x="30" y="140" width="30" height="30" fill="#fff" />
+                        <rect x="40" y="40" width="10" height="10" fill="#000" />
+                        <rect x="150" y="40" width="10" height="10" fill="#000" />
+                        <rect x="40" y="150" width="10" height="10" fill="#000" />
+                        <rect x="80" y="20" width="10" height="10" fill="#000" />
+                        <rect x="100" y="20" width="10" height="10" fill="#000" />
+                        <rect x="80" y="40" width="10" height="10" fill="#000" />
+                        <rect x="20" y="80" width="10" height="10" fill="#000" />
+                        <rect x="40" y="80" width="10" height="10" fill="#000" />
+                        <rect x="60" y="80" width="10" height="10" fill="#000" />
+                        <rect x="130" y="80" width="10" height="10" fill="#000" />
+                        <rect x="150" y="80" width="10" height="10" fill="#000" />
+                        <rect x="170" y="80" width="10" height="10" fill="#000" />
+                        <rect x="80" y="130" width="10" height="10" fill="#000" />
+                        <rect x="100" y="150" width="10" height="10" fill="#000" />
+                        <rect x="130" y="170" width="10" height="10" fill="#000" />
+                    </svg>
+                </div>
+                <p class="qr-text">Scan to Register</p>
             </div>
-        </div>
-        <div class="scroll-indicator">
-            <div class="mouse"></div>
+
+            <!-- Compact CTA -->
+            <div class="cta-compact">
+                <a href="#registration" class="btn-compact btn-primary">Register Now</a>
+                <a href="#departments" class="btn-compact btn-secondary">View Departments</a>
+            </div>
         </div>
     </section>
 
-    <!-- Departments Section -->
+    <!-- Mobile-Optimized Departments Section -->
     <section id="departments" class="departments">
         <div class="container">
-            <h2 class="section-title">Explore <span class="highlight">Departments</span></h2>
-            <p class="section-subtitle">Choose your domain and showcase your talent</p>
-            
-            <div class="departments-grid">
-                <div class="dept-card" data-dept="cse">
-                    <div class="dept-icon">💻</div>
-                    <h3>Computer Science & Engineering</h3>
-                    <p>Explore cutting-edge topics in AI, Cloud, and DevOps</p>
-                    <div class="dept-arrow">→</div>
+            <h2 class="section-title">Departments</h2>
+
+            <div class="departments-grid-mobile">
+                <div class="dept-card-mobile" data-dept="cse">
+                    <div class="dept-icon-mobile">💻</div>
+                    <h3>CSE</h3>
                 </div>
 
-                <div class="dept-card" data-dept="it">
-                    <div class="dept-icon">🌐</div>
-                    <h3>Information Technology</h3>
-                    <p>Dive into Quantum Computing, AI/ML, and Digital Twins</p>
-                    <div class="dept-arrow">→</div>
+                <div class="dept-card-mobile" data-dept="it">
+                    <div class="dept-icon-mobile">🌐</div>
+                    <h3>IT</h3>
                 </div>
 
-                <div class="dept-card" data-dept="aids">
-                    <div class="dept-icon">🤖</div>
-                    <h3>AI & DS / MCA</h3>
-                    <p>Master Agentic AI, Multimodal AI, and Edge Computing</p>
-                    <div class="dept-arrow">→</div>
+                <div class="dept-card-mobile" data-dept="aids">
+                    <div class="dept-icon-mobile">🤖</div>
+                    <h3>AI & DS</h3>
                 </div>
 
-                <div class="dept-card" data-dept="ece">
-                    <div class="dept-icon">📡</div>
-                    <h3>Electronics & Communication</h3>
-                    <p>Discover 6G, IoT, and Semiconductor Technology</p>
-                    <div class="dept-arrow">→</div>
+                <div class="dept-card-mobile" data-dept="ece">
+                    <div class="dept-icon-mobile">📡</div>
+                    <h3>ECE</h3>
                 </div>
 
-                <div class="dept-card" data-dept="eee">
-                    <div class="dept-icon">⚡</div>
-                    <h3>Electrical & Electronics</h3>
-                    <p>Power Systems, EVs, and Renewable Energy</p>
-                    <div class="dept-arrow">→</div>
+                <div class="dept-card-mobile" data-dept="eee">
+                    <div class="dept-icon-mobile">⚡</div>
+                    <h3>EEE</h3>
                 </div>
 
-                <div class="dept-card" data-dept="mech">
-                    <div class="dept-icon">⚙️</div>
-                    <h3>Mechanical Engineering</h3>
-                    <p>Green Energy, Robotics, and 3D Printing</p>
-                    <div class="dept-arrow">→</div>
+                <div class="dept-card-mobile" data-dept="mech">
+                    <div class="dept-icon-mobile">⚙️</div>
+                    <h3>Mech</h3>
                 </div>
 
-                <div class="dept-card" data-dept="civil">
-                    <div class="dept-icon">🏗️</div>
-                    <h3>Civil Engineering</h3>
-                    <p>Smart Cities, Green Buildings, and Sustainability</p>
-                    <div class="dept-arrow">→</div>
+                <div class="dept-card-mobile" data-dept="civil">
+                    <div class="dept-icon-mobile">🏗️</div>
+                    <h3>Civil</h3>
                 </div>
 
-                <div class="dept-card" data-dept="sh">
-                    <div class="dept-icon">📚</div>
-                    <h3>Science & Humanities</h3>
-                    <p>Language, Technology, and Real-world Applications</p>
-                    <div class="dept-arrow">→</div>
+                <div class="dept-card-mobile" data-dept="sh">
+                    <div class="dept-icon-mobile">📚</div>
+                    <h3>S&H</h3>
                 </div>
 
-                <div class="dept-card" data-dept="mba">
-                    <div class="dept-icon">💼</div>
+                <div class="dept-card-mobile" data-dept="mba">
+                    <div class="dept-icon-mobile">💼</div>
                     <h3>MBA</h3>
-                    <p>AI in Business, FinTech, and Digital Marketing</p>
-                    <div class="dept-arrow">→</div>
                 </div>
 
-                <div class="dept-card" data-dept="bme">
-                    <div class="dept-icon">🧬</div>
-                    <h3>Biomedical Engineering</h3>
-                    <p>Medical Devices, Bioinformatics, and Neural Engineering</p>
-                    <div class="dept-arrow">→</div>
+                <div class="dept-card-mobile" data-dept="bme">
+                    <div class="dept-icon-mobile">🧬</div>
+                    <h3>BME</h3>
                 </div>
             </div>
         </div>
@@ -172,7 +198,7 @@
     <section id="registration" class="registration">
         <div class="container">
             <h2 class="section-title">Registration <span class="highlight">Details</span></h2>
-            
+
             <div class="registration-grid">
                 <div class="registration-info">
                     <div class="timeline-card">
@@ -213,29 +239,29 @@
                             <div class="qr-code">
                                 <!-- QR Code placeholder -->
                                 <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                                    <rect width="200" height="200" fill="#fff"/>
-                                    <rect x="20" y="20" width="50" height="50" fill="#000"/>
-                                    <rect x="130" y="20" width="50" height="50" fill="#000"/>
-                                    <rect x="20" y="130" width="50" height="50" fill="#000"/>
-                                    <rect x="30" y="30" width="30" height="30" fill="#fff"/>
-                                    <rect x="140" y="30" width="30" height="30" fill="#fff"/>
-                                    <rect x="30" y="140" width="30" height="30" fill="#fff"/>
-                                    <rect x="40" y="40" width="10" height="10" fill="#000"/>
-                                    <rect x="150" y="40" width="10" height="10" fill="#000"/>
-                                    <rect x="40" y="150" width="10" height="10" fill="#000"/>
+                                    <rect width="200" height="200" fill="#fff" />
+                                    <rect x="20" y="20" width="50" height="50" fill="#000" />
+                                    <rect x="130" y="20" width="50" height="50" fill="#000" />
+                                    <rect x="20" y="130" width="50" height="50" fill="#000" />
+                                    <rect x="30" y="30" width="30" height="30" fill="#fff" />
+                                    <rect x="140" y="30" width="30" height="30" fill="#fff" />
+                                    <rect x="30" y="140" width="30" height="30" fill="#fff" />
+                                    <rect x="40" y="40" width="10" height="10" fill="#000" />
+                                    <rect x="150" y="40" width="10" height="10" fill="#000" />
+                                    <rect x="40" y="150" width="10" height="10" fill="#000" />
                                     <!-- Additional QR pattern elements -->
-                                    <rect x="80" y="20" width="10" height="10" fill="#000"/>
-                                    <rect x="100" y="20" width="10" height="10" fill="#000"/>
-                                    <rect x="80" y="40" width="10" height="10" fill="#000"/>
-                                    <rect x="20" y="80" width="10" height="10" fill="#000"/>
-                                    <rect x="40" y="80" width="10" height="10" fill="#000"/>
-                                    <rect x="60" y="80" width="10" height="10" fill="#000"/>
-                                    <rect x="130" y="80" width="10" height="10" fill="#000"/>
-                                    <rect x="150" y="80" width="10" height="10" fill="#000"/>
-                                    <rect x="170" y="80" width="10" height="10" fill="#000"/>
-                                    <rect x="80" y="130" width="10" height="10" fill="#000"/>
-                                    <rect x="100" y="150" width="10" height="10" fill="#000"/>
-                                    <rect x="130" y="170" width="10" height="10" fill="#000"/>
+                                    <rect x="80" y="20" width="10" height="10" fill="#000" />
+                                    <rect x="100" y="20" width="10" height="10" fill="#000" />
+                                    <rect x="80" y="40" width="10" height="10" fill="#000" />
+                                    <rect x="20" y="80" width="10" height="10" fill="#000" />
+                                    <rect x="40" y="80" width="10" height="10" fill="#000" />
+                                    <rect x="60" y="80" width="10" height="10" fill="#000" />
+                                    <rect x="130" y="80" width="10" height="10" fill="#000" />
+                                    <rect x="150" y="80" width="10" height="10" fill="#000" />
+                                    <rect x="170" y="80" width="10" height="10" fill="#000" />
+                                    <rect x="80" y="130" width="10" height="10" fill="#000" />
+                                    <rect x="100" y="150" width="10" height="10" fill="#000" />
+                                    <rect x="130" y="170" width="10" height="10" fill="#000" />
                                 </svg>
                             </div>
                             <p class="qr-label">Scan to Register</p>
@@ -251,7 +277,7 @@
     <section id="contact" class="contact">
         <div class="container">
             <h2 class="section-title">Get in <span class="highlight">Touch</span></h2>
-            
+
             <div class="contact-grid">
                 <div class="contact-info">
                     <h3>AVS Engineering College</h3>
@@ -325,4 +351,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
