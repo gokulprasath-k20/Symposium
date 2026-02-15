@@ -336,10 +336,10 @@ function showDepartmentModal(dept, deptKey) {
             </div>
 
             <form class="register-form dept-register-form" data-dept="${deptKey}">
-                <!-- Row 1: Team Leader Name & Email -->
+                <!-- Row 1: Name & Email -->
                 <div class="form-row">
                     <div class="form-field">
-                        <label class="name-label">Full Name (Participant)</label>
+                        <label class="name-label">Full Name</label>
                         <input type="text" name="name" placeholder="Your Name" required>
                     </div>
                     <div class="form-field">
@@ -374,24 +374,6 @@ function showDepartmentModal(dept, deptKey) {
                     </div>
                 </div>
 
-                <!-- Team Size Field (Hidden by default, shown for Paper/Project) -->
-                <div class="form-field team-size-field" style="display: none;">
-                    <label>Team Size</label>
-                    <select name="team_size" class="team-size-select">
-                        <option value="">Select Size</option>
-                        <option value="1">1 Member</option>
-                        <option value="2">2 Members</option>
-                        <option value="3">3 Members</option>
-                        <option value="4">4 Members</option>
-                    </select>
-                </div>
-
-                <!-- Team Members Section (Dynamic) -->
-                <div class="team-members-section" style="display: none;">
-                    <h4 class="team-members-title">👥 Team Members</h4>
-                    <div class="team-members-container"></div>
-                </div>
-
                 <!-- Event Type Field -->
                 <div class="form-field">
                     <label>Event Type</label>
@@ -404,13 +386,31 @@ function showDepartmentModal(dept, deptKey) {
                     </select>
                 </div>
 
-                <!-- Paper Topic Field (Dynamic) -->
+                <!-- Paper Topic Field (Only for Paper Presentation) -->
                 <div class="form-field paper-topic-field" style="display: none;">
                     <label>Paper Topic</label>
                     <select name="paper_topic" class="paper-topic-select">
                         <option value="">Select Topic</option>
                         ${dept.paperTopics ? dept.paperTopics.map(topic => `<option value="${topic}">${topic}</option>`).join('') : ''}
                     </select>
+                </div>
+
+                <!-- Team Size Field (Only for Paper Presentation, shown under Topic) -->
+                <div class="form-field team-size-field" style="display: none;">
+                    <label>Team Size</label>
+                    <select name="team_size" class="team-size-select">
+                        <option value="">Select Size</option>
+                        <option value="1">1 Member</option>
+                        <option value="2">2 Members</option>
+                        <option value="3">3 Members</option>
+                        <option value="4">4 Members</option>
+                    </select>
+                </div>
+
+                <!-- Team Members Section (Only for Paper Presentation, shown under Team Size) -->
+                <div class="team-members-section" style="display: none;">
+                    <h4 class="team-members-title">👥 Team Members</h4>
+                    <div class="team-members-container"></div>
                 </div>
 
                 <!-- Payment Amount Display -->
@@ -470,26 +470,24 @@ function setupDepartmentFormListeners(deptKey) {
         if (eventType === 'paper') {
             paperTopicField.style.display = 'block';
             paperTopicSelect.required = true;
-        } else {
-            paperTopicField.style.display = 'none';
-            paperTopicSelect.required = false;
-            paperTopicSelect.value = '';
-        }
 
-        // Show/hide team size field based on event type
-        // Team registration only for Paper Presentation and Project Expo
-        if (eventType === 'paper' || eventType === 'project') {
+            // Show team size field ONLY for Paper Presentation
             teamSizeField.style.display = 'block';
             teamSizeSelect.required = true;
             nameLabel.textContent = 'Full Name (Team Leader)';
         } else {
-            // Individual registration for Technical and Non-Technical
+            // Hide paper topic for all other events
+            paperTopicField.style.display = 'none';
+            paperTopicSelect.required = false;
+            paperTopicSelect.value = '';
+
+            // Hide team size and team members for all other events (including Project Expo)
             teamSizeField.style.display = 'none';
             teamSizeSelect.required = false;
             teamSizeSelect.value = '';
             teamMembersSection.style.display = 'none';
             teamMembersContainer.innerHTML = '';
-            nameLabel.textContent = 'Full Name (Participant)';
+            nameLabel.textContent = 'Full Name';
 
             // Reset to individual payment
             amountValue.textContent = '200';
@@ -535,8 +533,8 @@ function setupDepartmentFormListeners(deptKey) {
 
         const eventType = data.event;
 
-        // Determine if this is a team event
-        const isTeamEvent = (eventType === 'paper' || eventType === 'project');
+        // Determine if this is a team event (only Paper Presentation)
+        const isTeamEvent = (eventType === 'paper');
 
         let teamSize = 1;
         let teamMembers = [data.name];
@@ -653,7 +651,7 @@ Thank you for registering for Vyugam'26!`;
         teamMembersContainer.innerHTML = '';
         amountValue.textContent = '200';
         btnAmount.textContent = '200';
-        nameLabel.textContent = 'Full Name (Participant)';
+        nameLabel.textContent = 'Full Name';
 
         // Close modal and scroll to home
         closeModal();
