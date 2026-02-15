@@ -332,14 +332,14 @@ function showDepartmentModal(dept, deptKey) {
             <div class="dates-strip">
                 <span>Last Date: <strong>25 Feb</strong></span>
                 <span>Event: <strong>6 Mar</strong></span>
-                <span>Fee: <strong>₹200</strong></span>
+                <span>Base Fee: <strong>₹200/member</strong></span>
             </div>
 
             <form class="register-form dept-register-form" data-dept="${deptKey}">
-                <!-- Row 1: Name & Email -->
+                <!-- Row 1: Team Leader Name & Email -->
                 <div class="form-row">
                     <div class="form-field">
-                        <label>Full Name</label>
+                        <label class="name-label">Full Name (Participant)</label>
                         <input type="text" name="name" placeholder="Your Name" required>
                     </div>
                     <div class="form-field">
@@ -360,7 +360,7 @@ function showDepartmentModal(dept, deptKey) {
                     </div>
                 </div>
 
-                <!-- Row 3: Year & Event Type -->
+                <!-- Row 3: Year -->
                 <div class="form-row">
                     <div class="form-field">
                         <label>Year</label>
@@ -372,16 +372,36 @@ function showDepartmentModal(dept, deptKey) {
                             <option value="4">4th Year</option>
                         </select>
                     </div>
-                    <div class="form-field">
-                        <label>Event Type</label>
-                        <select name="event" class="event-select" required>
-                            <option value="">Select Event</option>
-                            ${dept.paperTopics && dept.paperTopics.length > 0 ? '<option value="paper">Paper Presentation</option>' : ''}
-                            ${dept.technicalEvents && dept.technicalEvents.length > 0 ? '<option value="technical">Technical Event</option>' : ''}
-                            ${dept.nonTechnicalEvents && dept.nonTechnicalEvents.length > 0 ? '<option value="non-technical">Non-Technical Event</option>' : ''}
-                            ${dept.projectExpo && dept.projectExpo.length > 0 ? '<option value="project">Project Expo</option>' : ''}
-                        </select>
-                    </div>
+                </div>
+
+                <!-- Team Size Field (Hidden by default, shown for Paper/Project) -->
+                <div class="form-field team-size-field" style="display: none;">
+                    <label>Team Size</label>
+                    <select name="team_size" class="team-size-select">
+                        <option value="">Select Size</option>
+                        <option value="1">1 Member</option>
+                        <option value="2">2 Members</option>
+                        <option value="3">3 Members</option>
+                        <option value="4">4 Members</option>
+                    </select>
+                </div>
+
+                <!-- Team Members Section (Dynamic) -->
+                <div class="team-members-section" style="display: none;">
+                    <h4 class="team-members-title">👥 Team Members</h4>
+                    <div class="team-members-container"></div>
+                </div>
+
+                <!-- Event Type Field -->
+                <div class="form-field">
+                    <label>Event Type</label>
+                    <select name="event" class="event-select" required>
+                        <option value="">Select Event</option>
+                        ${dept.paperTopics && dept.paperTopics.length > 0 ? '<option value="paper">Paper Presentation</option>' : ''}
+                        ${dept.technicalEvents && dept.technicalEvents.length > 0 ? '<option value="technical">Technical Event</option>' : ''}
+                        ${dept.nonTechnicalEvents && dept.nonTechnicalEvents.length > 0 ? '<option value="non-technical">Non-Technical Event</option>' : ''}
+                        ${dept.projectExpo && dept.projectExpo.length > 0 ? '<option value="project">Project Expo</option>' : ''}
+                    </select>
                 </div>
 
                 <!-- Paper Topic Field (Dynamic) -->
@@ -393,37 +413,15 @@ function showDepartmentModal(dept, deptKey) {
                     </select>
                 </div>
 
-                <!-- Submit Button -->
-                <button type="submit" class="btn-submit">👉 Proceed to Pay</button>
-            </form>
-
-            <!-- Payment QR Code -->
-            <div class="payment-qr">
-                <p class="qr-title">Scan to Pay ₹200</p>
-                <div class="qr-code-small">
-                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="200" height="200" fill="#fff" />
-                        <rect x="20" y="20" width="50" height="50" fill="#000" />
-                        <rect x="130" y="20" width="50" height="50" fill="#000" />
-                        <rect x="20" y="130" width="50" height="50" fill="#000" />
-                        <rect x="30" y="30" width="30" height="30" fill="#fff" />
-                        <rect x="140" y="30" width="30" height="30" fill="#fff" />
-                        <rect x="30" y="140" width="30" height="30" fill="#fff" />
-                        <rect x="40" y="40" width="10" height="10" fill="#000" />
-                        <rect x="150" y="40" width="10" height="10" fill="#000" />
-                        <rect x="40" y="150" width="10" height="10" fill="#000" />
-                        <rect x="80" y="20" width="10" height="10" fill="#000" />
-                        <rect x="100" y="30" width="10" height="10" fill="#000" />
-                        <rect x="20" y="80" width="10" height="10" fill="#000" />
-                        <rect x="60" y="80" width="10" height="10" fill="#000" />
-                        <rect x="130" y="80" width="10" height="10" fill="#000" />
-                        <rect x="170" y="80" width="10" height="10" fill="#000" />
-                        <rect x="80" y="130" width="10" height="10" fill="#000" />
-                        <rect x="100" y="150" width="10" height="10" fill="#000" />
-                    </svg>
+                <!-- Payment Amount Display -->
+                <div class="payment-amount-display">
+                    <span class="payment-label">Registration Fee:</span>
+                    <span class="payment-amount">₹<span class="amount-value">200</span></span>
                 </div>
-                <p class="upi-id">UPI: symposium@avs</p>
-            </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn-submit">👉 Proceed to Pay ₹<span class="btn-amount">200</span></button>
+            </form>
         </div>
     `;
 
@@ -456,16 +454,73 @@ function setupDepartmentFormListeners(deptKey) {
     const eventSelect = form.querySelector('.event-select');
     const paperTopicField = form.querySelector('.paper-topic-field');
     const paperTopicSelect = form.querySelector('.paper-topic-select');
+    const teamSizeField = form.querySelector('.team-size-field');
+    const teamSizeSelect = form.querySelector('.team-size-select');
+    const teamMembersSection = form.querySelector('.team-members-section');
+    const teamMembersContainer = form.querySelector('.team-members-container');
+    const amountValue = form.querySelector('.amount-value');
+    const btnAmount = form.querySelector('.btn-amount');
+    const nameLabel = form.querySelector('.name-label');
 
-    // Show/hide paper topic field based on event selection
+    // Handle event type change
     eventSelect.addEventListener('change', () => {
-        if (eventSelect.value === 'paper') {
+        const eventType = eventSelect.value;
+
+        // Show/hide paper topic field
+        if (eventType === 'paper') {
             paperTopicField.style.display = 'block';
             paperTopicSelect.required = true;
         } else {
             paperTopicField.style.display = 'none';
             paperTopicSelect.required = false;
             paperTopicSelect.value = '';
+        }
+
+        // Show/hide team size field based on event type
+        // Team registration only for Paper Presentation and Project Expo
+        if (eventType === 'paper' || eventType === 'project') {
+            teamSizeField.style.display = 'block';
+            teamSizeSelect.required = true;
+            nameLabel.textContent = 'Full Name (Team Leader)';
+        } else {
+            // Individual registration for Technical and Non-Technical
+            teamSizeField.style.display = 'none';
+            teamSizeSelect.required = false;
+            teamSizeSelect.value = '';
+            teamMembersSection.style.display = 'none';
+            teamMembersContainer.innerHTML = '';
+            nameLabel.textContent = 'Full Name (Participant)';
+
+            // Reset to individual payment
+            amountValue.textContent = '200';
+            btnAmount.textContent = '200';
+        }
+    });
+
+    // Handle team size change
+    teamSizeSelect.addEventListener('change', () => {
+        const teamSize = parseInt(teamSizeSelect.value);
+
+        if (teamSize && teamSize > 0) {
+            // Calculate payment
+            const totalAmount = teamSize * 200;
+            amountValue.textContent = totalAmount;
+            btnAmount.textContent = totalAmount;
+
+            // Show/hide team members section
+            if (teamSize > 1) {
+                teamMembersSection.style.display = 'block';
+                generateTeamMemberFields(teamSize, teamMembersContainer);
+            } else {
+                teamMembersSection.style.display = 'none';
+                teamMembersContainer.innerHTML = '';
+            }
+        } else {
+            // Reset to default
+            amountValue.textContent = '200';
+            btnAmount.textContent = '200';
+            teamMembersSection.style.display = 'none';
+            teamMembersContainer.innerHTML = '';
         }
     });
 
@@ -477,6 +532,43 @@ function setupDepartmentFormListeners(deptKey) {
         const formData = new FormData(form);
         const data = Object.fromEntries(formData);
         data.department = deptKey;
+
+        const eventType = data.event;
+
+        // Determine if this is a team event
+        const isTeamEvent = (eventType === 'paper' || eventType === 'project');
+
+        let teamSize = 1;
+        let teamMembers = [data.name];
+
+        if (isTeamEvent) {
+            // Team registration logic
+            if (!data.team_size) {
+                alert('Please select team size!');
+                return;
+            }
+
+            teamSize = parseInt(data.team_size);
+
+            // Collect team member names
+            if (teamSize > 1) {
+                for (let i = 2; i <= teamSize; i++) {
+                    const memberName = data[`team_member_${i}`];
+                    if (!memberName || memberName.trim() === '') {
+                        alert(`Please enter name for Team Member ${i}!`);
+                        return;
+                    }
+                    teamMembers.push(memberName.trim());
+                }
+            }
+
+            // Check for duplicate names
+            const uniqueNames = new Set(teamMembers.map(name => name.toLowerCase()));
+            if (uniqueNames.size !== teamMembers.length) {
+                alert('Team member names must be unique! Please check for duplicates.');
+                return;
+            }
+        }
 
         // Validation
         if (!data.name || !data.email || !data.mobile || !data.college || !data.year || !data.event) {
@@ -490,6 +582,9 @@ function setupDepartmentFormListeners(deptKey) {
             return;
         }
 
+        // Calculate total amount
+        const totalAmount = teamSize * 200;
+
         // Get event name for confirmation
         const eventNames = {
             'paper': 'Paper Presentation',
@@ -501,18 +596,37 @@ function setupDepartmentFormListeners(deptKey) {
         const paperTopicText = data.paper_topic ? ` (Topic: ${data.paper_topic})` : '';
         const deptName = departmentData[deptKey].name;
 
+        // Build team members list for confirmation (only for team events)
+        let teamInfo = '';
+        if (isTeamEvent) {
+            teamInfo = `\nTeam Size: ${teamSize} ${teamSize === 1 ? 'Member' : 'Members'}`;
+            if (teamSize === 1) {
+                teamInfo += `\nParticipant: ${teamMembers[0]}`;
+            } else {
+                teamInfo += `\nTeam Leader: ${teamMembers[0]}`;
+                for (let i = 1; i < teamMembers.length; i++) {
+                    teamInfo += `\nMember ${i + 1}: ${teamMembers[i]}`;
+                }
+            }
+        } else {
+            teamInfo = `\nParticipant: ${data.name}`;
+        }
+
         // Simulate sending confirmation Email and SMS
         const confirmationMessage = `✅ Registration Successful!
 
 You are registered for ${selectedEventName}${paperTopicText}
 Department: ${deptName}
 Event Date: 6 March 2026
+${teamInfo}
+
+Total Registration Fee: ₹${totalAmount}
 
 Confirmation will be sent to:
 📧 Email: ${data.email}
 📱 Mobile: ${data.mobile}
 
-Please complete payment of ₹200 using the QR code above.
+Please complete payment of ₹${totalAmount}.
 
 Thank you for registering for Vyugam'26!`;
 
@@ -522,12 +636,24 @@ Thank you for registering for Vyugam'26!`;
         // Log for demonstration
         console.log('📧 Email Confirmation Sent to:', data.email);
         console.log('📱 SMS Confirmation Sent to:', data.mobile);
-        console.log('Registration Data:', data);
+        console.log('Registration Data:', {
+            ...data,
+            isTeamEvent: isTeamEvent,
+            teamMembers: teamMembers,
+            totalAmount: totalAmount
+        });
 
         // Reset form
         form.reset();
         paperTopicField.style.display = 'none';
         paperTopicSelect.required = false;
+        teamSizeField.style.display = 'none';
+        teamSizeSelect.required = false;
+        teamMembersSection.style.display = 'none';
+        teamMembersContainer.innerHTML = '';
+        amountValue.textContent = '200';
+        btnAmount.textContent = '200';
+        nameLabel.textContent = 'Full Name (Participant)';
 
         // Close modal and scroll to home
         closeModal();
@@ -535,6 +661,23 @@ Thank you for registering for Vyugam'26!`;
             document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
         }, 300);
     });
+}
+
+// Generate team member input fields dynamically
+function generateTeamMemberFields(teamSize, container) {
+    container.innerHTML = '';
+
+    // Generate fields for members 2 to teamSize (member 1 is the leader)
+    for (let i = 2; i <= teamSize; i++) {
+        const memberField = document.createElement('div');
+        memberField.className = 'form-field team-member-field';
+        memberField.style.animation = 'slideIn 0.3s ease';
+        memberField.innerHTML = `
+            <label>Team Member ${i} Name</label>
+            <input type="text" name="team_member_${i}" placeholder="Member ${i} Name" required>
+        `;
+        container.appendChild(memberField);
+    }
 }
 
 // Add touch feedback for mobile

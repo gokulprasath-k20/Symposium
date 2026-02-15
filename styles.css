@@ -916,6 +916,76 @@ body {
     margin-top: var(--space-sm);
 }
 
+/* ===== TEAM REGISTRATION SECTION ===== */
+.team-members-section {
+    margin-top: var(--space-md);
+    padding: var(--space-md);
+    background: rgba(251, 191, 36, 0.05);
+    border: 1px solid rgba(251, 191, 36, 0.2);
+    border-radius: 12px;
+}
+
+.team-members-title {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    color: var(--gold);
+    margin-bottom: var(--space-sm);
+    text-align: center;
+}
+
+.team-members-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.team-member-field {
+    animation: slideIn 0.3s ease;
+}
+
+/* Payment Amount Display */
+.payment-amount-display {
+    background: linear-gradient(135deg, var(--gold), #f59e0b);
+    border-radius: 12px;
+    padding: var(--space-md);
+    margin: var(--space-md) 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3);
+}
+
+.payment-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--deep-blue);
+}
+
+.payment-amount {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--deep-blue);
+}
+
+.amount-value,
+.btn-amount {
+    transition: all 0.3s ease;
+}
+
+/* Slide In Animation */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* ===== MINIMAL FOOTER ===== */
 .footer {
     background: var(--deep-blue);
@@ -1125,6 +1195,22 @@ body {
     .topic-list li {
         font-size: 1rem;
         padding: var(--space-md);
+    }
+
+    .team-members-title {
+        font-size: 1.2rem;
+    }
+
+    .payment-amount-display {
+        padding: var(--space-lg);
+    }
+
+    .payment-label {
+        font-size: 1.1rem;
+    }
+
+    .payment-amount {
+        font-size: 2rem;
     }
 }
 
