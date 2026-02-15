@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vyugam'26 - Structure Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a1f44 0%, #020617 100%);
+            color: #f8fafc;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #06b6d4;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+        }
+
+        .section {
+            background: rgba(6, 182, 212, 0.1);
+            border: 2px solid #06b6d4;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #fbbf24;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        h3 {
+            color: #06b6d4;
+            margin: 20px 0 10px 0;
+            font-size: 1.3rem;
+        }
+
+        .flow-diagram {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .flow-item {
+            background: rgba(251, 191, 36, 0.1);
+            border-left: 4px solid #fbbf24;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .flow-arrow {
+            text-align: center;
+            font-size: 2rem;
+            color: #06b6d4;
+        }
+
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .before,
+        .after {
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .before {
+            background: rgba(239, 68, 68, 0.1);
+            border: 2px solid #ef4444;
+        }
+
+        .after {
+            background: rgba(34, 197, 94, 0.1);
+            border: 2px solid #22c55e;
+        }
+
+        .before h4 {
+            color: #ef4444;
+        }
+
+        .after h4 {
+            color: #22c55e;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        .highlight {
+            background: rgba(251, 191, 36, 0.2);
+            padding: 2px 8px;
+            border-radius: 4px;
+            color: #fbbf24;
+            font-weight: bold;
+        }
+
+        .removed {
+            text-decoration: line-through;
+            color: #ef4444;
+        }
+
+        .added {
+            color: #22c55e;
+            font-weight: bold;
+        }
+
+        code {
+            background: rgba(2, 6, 23, 0.8);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #06b6d4;
+            font-family: 'Courier New', monospace;
+        }
+
+        .feature-box {
+            background: rgba(6, 182, 212, 0.05);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+
+        @media (max-width: 768px) {
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🎯 Vyugam'26 Website Restructure Guide</h1>
+
+        <!-- Navigation Changes -->
+        <div class="section">
+            <h2>📱 Navigation Changes</h2>
+            <div class="comparison">
+                <div class="before">
+                    <h4>❌ BEFORE</h4>
+                    <ul>
+                        <li>🏠 Home</li>
+                        <li>📚 Departments</li>
+                        <li class="removed">📝 Register</li>
+                    </ul>
+                </div>
+                <div class="after">
+                    <h4>✅ AFTER</h4>
+                    <ul>
+                        <li>🏠 Home</li>
+                        <li>📚 Departments</li>
+                        <li class="added">📞 Contact Us</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- User Flow -->
+        <div class="section">
+            <h2>🔄 New Registration Flow</h2>
+            <div class="flow-diagram">
+                <div class="flow-item">
+                    <strong>Step 1:</strong> User lands on <span class="highlight">HOME</span> page
+                </div>
+                <div class="flow-arrow">⬇️</div>
+                <div class="flow-item">
+                    <strong>Step 2:</strong> Clicks <span class="highlight">"Register Now"</span> button
+                </div>
+                <div class="flow-arrow">⬇️</div>
+                <div class="flow-item">
+                    <strong>Step 3:</strong> Page scrolls to <span class="highlight">DEPARTMENTS</span> section
+                </div>
+                <div class="flow-arrow">⬇️</div>
+                <div class="flow-item">
+                    <strong>Step 4:</strong> User selects their <span class="highlight">DEPARTMENT</span> (e.g., CSE,
+                    IT, ECE)
+                </div>
+                <div class="flow-arrow">⬇️</div>
+                <div class="flow-item">
+                    <strong>Step 5:</strong> Department modal opens with:
+                    <ul>
+                        <li>📄 Paper Presentation Topics</li>
+                        <li>💡 Technical Events</li>
+                        <li>🎯 Non-Technical Events</li>
+                        <li>📞 Department Contacts</li>
+                        <li class="added">📝 REGISTRATION FORM (NEW!)</li>
+                    </ul>
+                </div>
+                <div class="flow-arrow">⬇️</div>
+                <div class="flow-item">
+                    <strong>Step 6:</strong> User scrolls to <span class="highlight">Registration Section</span> in
+                    modal
+                </div>
+                <div class="flow-arrow">⬇️</div>
+                <div class="flow-item">
+                    <strong>Step 7:</strong> User fills form and clicks <span class="highlight">"Proceed to Pay"</span>
+                </div>
+                <div class="flow-arrow">⬇️</div>
+                <div class="flow-item">
+                    <strong>Step 8:</strong> Confirmation shown → QR code payment → Done! ✅
+                </div>
+            </div>
+        </div>
+
+        <!-- Registration Form Details -->
+        <div class="section">
+            <h2>📝 Registration Form (Inside Each Department)</h2>
+
+            <h3>Form Fields:</h3>
+            <div class="feature-box">
+                <ul>
+                    <li><strong>Full Name</strong> - Text input</li>
+                    <li><strong>Email</strong> - Email validation</li>
+                    <li><strong>Mobile</strong> - 10-digit phone number</li>
+                    <li><strong>College</strong> - Text input</li>
+                    <li><strong>Year</strong> - Dropdown (1st, 2nd, 3rd, 4th)</li>
+                    <li><strong>Event Type</strong> - Dropdown (filtered by department)</li>
+                    <li><strong>Paper Topic</strong> - Appears only for Paper Presentation</li>
+                </ul>
+            </div>
+
+            <h3>Smart Features:</h3>
+            <div class="feature-box">
+                <ul>
+                    <li>✅ <strong>Auto-filtered events</strong> - Only shows events available for that department</li>
+                    <li>✅ <strong>Dynamic paper topics</strong> - Topics specific to selected department</li>
+                    <li>✅ <strong>Department pre-selected</strong> - No need to choose department again</li>
+                    <li>✅ <strong>Mobile responsive</strong> - Fits perfectly in modal on all devices</li>
+                    <li>✅ <strong>Validation</strong> - All required fields checked before submission</li>
+                    <li>✅ <strong>Payment QR</strong> - Integrated QR code for ₹200 payment</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- What Was Removed -->
+        <div class="section">
+            <h2>🗑️ What Was Removed</h2>
+            <div class="feature-box">
+                <ul>
+                    <li class="removed">Standalone <code>#register</code> page section</li>
+                    <li class="removed">Global registration form</li>
+                    <li class="removed">Navigation link to "Register" page</li>
+                    <li class="removed">Department selection dropdown in form</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Benefits -->
+        <div class="section">
+            <h2>🎉 Benefits of New Structure</h2>
+            <div class="feature-box">
+                <ul>
+                    <li>✅ <strong>Simpler Navigation</strong> - Only 3 main pages (Home, Departments, Contact)</li>
+                    <li>✅ <strong>Better UX</strong> - Users see event details before registering</li>
+                    <li>✅ <strong>Context-Aware</strong> - Form knows which department user selected</li>
+                    <li>✅ <strong>Less Confusion</strong> - No duplicate department selection</li>
+                    <li>✅ <strong>Mobile-Friendly</strong> - Everything in one scrollable modal</li>
+                    <li>✅ <strong>Cleaner Code</strong> - Registration tied to department context</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Testing Guide -->
+        <div class="section">
+            <h2>🧪 Quick Testing Guide</h2>
+
+            <h3>1. Test Navigation</h3>
+            <div class="feature-box">
+                <p>✓ Click each nav item (Home, Depts, Contact)</p>
+                <p>✓ Verify smooth scrolling</p>
+                <p>✓ Check active state updates</p>
+            </div>
+
+            <h3>2. Test Registration Flow</h3>
+            <div class="feature-box">
+                <p>✓ Click "Register Now" on home page</p>
+                <p>✓ Should scroll to Departments section</p>
+                <p>✓ Click any department (e.g., CSE)</p>
+                <p>✓ Modal should open with all info + form</p>
+            </div>
+
+            <h3>3. Test Form Functionality</h3>
+            <div class="feature-box">
+                <p>✓ Fill all form fields</p>
+                <p>✓ Select "Paper Presentation" → Paper Topic field appears</p>
+                <p>✓ Select other event type → Paper Topic field hides</p>
+                <p>✓ Submit form → Confirmation message appears</p>
+                <p>✓ Modal closes and scrolls to home</p>
+            </div>
+
+            <h3>4. Test Mobile Responsive</h3>
+            <div class="feature-box">
+                <p>✓ Resize browser to mobile width</p>
+                <p>✓ Department grid should be 2 columns</p>
+                <p>✓ Modal should be full-screen</p>
+                <p>✓ Form should fit without horizontal scroll</p>
+            </div>
+        </div>
+
+        <!-- Files Modified -->
+        <div class="section">
+            <h2>📁 Files Modified</h2>
+            <div class="feature-box">
+                <ul>
+                    <li><code>index.html</code> - Navigation, removed register page, updated contact section</li>
+                    <li><code>script.js</code> - Updated modal function, added form handlers</li>
+                    <li><code>styles.css</code> - Added department registration styles, updated contact page</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Final Note -->
+        <div class="section" style="background: rgba(251, 191, 36, 0.1); border-color: #fbbf24;">
+            <h2>🎯 Final Result</h2>
+            <p style="font-size: 1.1rem; text-align: center; margin: 20px 0;">
+                <strong>Website Structure:</strong><br>
+                <span class="highlight">HOME</span> →
+                <span class="highlight">DEPARTMENTS</span> →
+                <span class="highlight">CONTACT US</span>
+            </p>
+            <p style="text-align: center; margin-top: 20px;">
+                <strong>Registration happens inside each department modal!</strong>
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>

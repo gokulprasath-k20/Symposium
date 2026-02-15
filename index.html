@@ -29,9 +29,9 @@
                     <span class="nav-icon">📚</span>
                     <span class="nav-text">Depts</span>
                 </a>
-                <a href="#register" class="nav-item">
-                    <span class="nav-icon">📝</span>
-                    <span class="nav-text">Register</span>
+                <a href="#contact" class="nav-item">
+                    <span class="nav-icon">📞</span>
+                    <span class="nav-text">Contact</span>
                 </a>
             </div>
         </div>
@@ -76,7 +76,7 @@
             </div>
 
             <!-- CTA Button -->
-            <a href="#register" class="btn-primary" id="registerBtn">Register Now</a>
+            <a href="#departments" class="btn-primary" id="registerBtn">Register Now</a>
 
             <!-- Patron & Convenors Section -->
             <div class="patron-convenors">
@@ -153,126 +153,7 @@
         </div>
     </section>
 
-    <!-- REGISTRATION PAGE - Ultra Compact --\>
-    <section id="register" class="page register-page">
-        <div class="page-container">
-            <h2 class="page-title">Register Now</h2>
 
-            <!-- Important Dates Compact -->
-    <div class="dates-strip">
-        <span>Last Date: <strong>25 Feb</strong></span>
-        <span>Event: <strong>6 Mar</strong></span>
-        <span>Fee: <strong>₹200</strong></span>
-    </div>
-
-    <form class="register-form" id="registerForm">
-        <!-- Row 1: Name & College -->
-        <div class="form-row">
-            <div class="form-field">
-                <label>Name</label>
-                <input type="text" name="name" placeholder="Your Name" required>
-            </div>
-            <div class="form-field">
-                <label>College</label>
-                <input type="text" name="college" placeholder="College Name" required>
-            </div>
-        </div>
-
-        <!-- Row 2: Department & Event -->
-        <div class="form-row">
-            <div class="form-field">
-                <label>Department</label>
-                <select name="department" required>
-                    <option value="">Select Dept</option>
-                    <option value="cse">CSE</option>
-                    <option value="it">IT</option>
-                    <option value="aids">AI & DS / MCA</option>
-                    <option value="ece">ECE</option>
-                    <option value="eee">EEE</option>
-                    <option value="mech">Mechanical</option>
-                    <option value="civil">Civil</option>
-                    <option value="sh">S&H(1styear)</option>
-                    <option value="mba">MBA</option>
-                    <option value="bme">BME</option>
-                </select>
-            </div>
-            <div class="form-field">
-                <label>Event Type</label>
-                <select name="event" required>
-                    <option value="">Select Event</option>
-                    <option value="paper">Paper Presentation</option>
-                    <option value="technical">Technical Event</option>
-                    <option value="non-technical">Non-Technical</option>
-                    <option value="project">Project Expo</option>
-                </select>
-            </div>
-        </div>
-
-        <!-- Row 3: Mobile & Payment Mode -->
-        <div class="form-row">
-            <div class="form-field">
-                <label>Mobile</label>
-                <input type="tel" name="mobile" placeholder="10-digit number" pattern="[0-9]{10}" required>
-            </div>
-            <div class="form-field">
-                <label>Payment Mode</label>
-                <select name="payment_mode" required>
-                    <option value="">Select Mode</option>
-                    <option value="upi">UPI</option>
-                    <option value="card">Card</option>
-                    <option value="netbanking">Net Banking</option>
-                    <option value="cash">Cash (Spot)</option>
-                </select>
-            </div>
-        </div>
-
-        <!-- Row 4: Email & Paper Topic (Dynamic) -->
-        <div class="form-row">
-            <div class="form-field">
-                <label>Email</label>
-                <input type="email" name="email" placeholder="your@email.com" required>
-            </div>
-            <div class="form-field" id="paperTopicField" style="display: none;">
-                <label>Paper Topic</label>
-                <select name="paper_topic" id="paperTopicSelect">
-                    <option value="">Select Topic</option>
-                </select>
-            </div>
-        </div>
-
-        <!-- Submit Button -->
-        <button type="submit" class="btn-submit">✓ Submit Registration</button>
-    </form>
-
-    <!-- Payment QR Code - Compact -->
-    <div class="payment-qr">
-        <p class="qr-title">Scan to Pay ₹200</p>
-        <div class="qr-code-small">
-            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <rect width="200" height="200" fill="#fff" />
-                <rect x="20" y="20" width="50" height="50" fill="#000" />
-                <rect x="130" y="20" width="50" height="50" fill="#000" />
-                <rect x="20" y="130" width="50" height="50" fill="#000" />
-                <rect x="30" y="30" width="30" height="30" fill="#fff" />
-                <rect x="140" y="30" width="30" height="30" fill="#fff" />
-                <rect x="30" y="140" width="30" height="30" fill="#fff" />
-                <rect x="40" y="40" width="10" height="10" fill="#000" />
-                <rect x="150" y="40" width="10" height="10" fill="#000" />
-                <rect x="40" y="150" width="10" height="10" fill="#000" />
-                <rect x="80" y="20" width="10" height="10" fill="#000" />
-                <rect x="100" y="30" width="10" height="10" fill="#000" />
-                <rect x="20" y="80" width="10" height="10" fill="#000" />
-                <rect x="60" y="80" width="10" height="10" fill="#000" />
-                <rect x="130" y="80" width="10" height="10" fill="#000" />
-                <rect x="170" y="80" width="10" height="10" fill="#000" />
-                <rect x="80" y="130" width="10" height="10" fill="#000" />
-                <rect x="100" y="150" width="10" height="10" fill="#000" />
-            </svg>
-        </div>
-        <p class="upi-id">UPI: symposium@avs</p>
-    </div>
-    </div>
-    </section>
 
     <!-- Department Modal -->
     <div class="modal" id="deptModal">
@@ -283,10 +164,10 @@
         </div>
     </div>
 
-    <!-- Contact Us Section -->
-    <section id="contact" class="contact-section">
-        <div class="contact-container">
-            <h2 class="contact-title">Contact Us</h2>
+    <!-- CONTACT US PAGE -->
+    <section id="contact" class="page contact-page">
+        <div class="page-container">
+            <h2 class="page-title">Contact Us</h2>
             <div class="contact-info">
                 <p><strong>AVS Engineering College</strong></p>
                 <p>Military Road, Ammapet</p>

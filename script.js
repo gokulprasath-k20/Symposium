@@ -209,20 +209,20 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// Register Now Button - Smooth Navigation
+// Register Now Button - Smooth Navigation to Departments
 const registerBtn = document.getElementById('registerBtn');
 if (registerBtn) {
     registerBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        const registerSection = document.getElementById('register');
-        if (registerSection) {
-            registerSection.scrollIntoView({ behavior: 'smooth' });
+        const departmentsSection = document.getElementById('departments');
+        if (departmentsSection) {
+            departmentsSection.scrollIntoView({ behavior: 'smooth' });
 
             // Update active nav state
             navItems.forEach(nav => nav.classList.remove('active'));
-            const registerNavItem = document.querySelector('.nav-item[href="#register"]');
-            if (registerNavItem) {
-                registerNavItem.classList.add('active');
+            const deptNavItem = document.querySelector('.nav-item[href="#departments"]');
+            if (deptNavItem) {
+                deptNavItem.classList.add('active');
             }
         }
     });
@@ -241,12 +241,12 @@ deptItems.forEach(item => {
         const dept = departmentData[deptKey];
 
         if (dept) {
-            showDepartmentModal(dept);
+            showDepartmentModal(dept, deptKey);
         }
     });
 });
 
-function showDepartmentModal(dept) {
+function showDepartmentModal(dept, deptKey) {
     let modalContent = `
         <div class="modal-header">
             <div class="dept-icon-large">${dept.icon}</div>
@@ -323,9 +323,116 @@ function showDepartmentModal(dept) {
         `;
     }
 
+    // Registration Section
+    modalContent += `
+        <div class="dept-register-section">
+            <h3 class="register-section-title">📝 Register for ${dept.name}</h3>
+            
+            <!-- Important Dates -->
+            <div class="dates-strip">
+                <span>Last Date: <strong>25 Feb</strong></span>
+                <span>Event: <strong>6 Mar</strong></span>
+                <span>Fee: <strong>₹200</strong></span>
+            </div>
+
+            <form class="register-form dept-register-form" data-dept="${deptKey}">
+                <!-- Row 1: Name & Email -->
+                <div class="form-row">
+                    <div class="form-field">
+                        <label>Full Name</label>
+                        <input type="text" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-field">
+                        <label>Email</label>
+                        <input type="email" name="email" placeholder="your@email.com" required>
+                    </div>
+                </div>
+
+                <!-- Row 2: Mobile & College -->
+                <div class="form-row">
+                    <div class="form-field">
+                        <label>Mobile</label>
+                        <input type="tel" name="mobile" placeholder="10-digit number" pattern="[0-9]{10}" required>
+                    </div>
+                    <div class="form-field">
+                        <label>College</label>
+                        <input type="text" name="college" placeholder="College Name" required>
+                    </div>
+                </div>
+
+                <!-- Row 3: Year & Event Type -->
+                <div class="form-row">
+                    <div class="form-field">
+                        <label>Year</label>
+                        <select name="year" required>
+                            <option value="">Select Year</option>
+                            <option value="1">1st Year</option>
+                            <option value="2">2nd Year</option>
+                            <option value="3">3rd Year</option>
+                            <option value="4">4th Year</option>
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <label>Event Type</label>
+                        <select name="event" class="event-select" required>
+                            <option value="">Select Event</option>
+                            ${dept.paperTopics && dept.paperTopics.length > 0 ? '<option value="paper">Paper Presentation</option>' : ''}
+                            ${dept.technicalEvents && dept.technicalEvents.length > 0 ? '<option value="technical">Technical Event</option>' : ''}
+                            ${dept.nonTechnicalEvents && dept.nonTechnicalEvents.length > 0 ? '<option value="non-technical">Non-Technical Event</option>' : ''}
+                            ${dept.projectExpo && dept.projectExpo.length > 0 ? '<option value="project">Project Expo</option>' : ''}
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Paper Topic Field (Dynamic) -->
+                <div class="form-field paper-topic-field" style="display: none;">
+                    <label>Paper Topic</label>
+                    <select name="paper_topic" class="paper-topic-select">
+                        <option value="">Select Topic</option>
+                        ${dept.paperTopics ? dept.paperTopics.map(topic => `<option value="${topic}">${topic}</option>`).join('') : ''}
+                    </select>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn-submit">👉 Proceed to Pay</button>
+            </form>
+
+            <!-- Payment QR Code -->
+            <div class="payment-qr">
+                <p class="qr-title">Scan to Pay ₹200</p>
+                <div class="qr-code-small">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="200" height="200" fill="#fff" />
+                        <rect x="20" y="20" width="50" height="50" fill="#000" />
+                        <rect x="130" y="20" width="50" height="50" fill="#000" />
+                        <rect x="20" y="130" width="50" height="50" fill="#000" />
+                        <rect x="30" y="30" width="30" height="30" fill="#fff" />
+                        <rect x="140" y="30" width="30" height="30" fill="#fff" />
+                        <rect x="30" y="140" width="30" height="30" fill="#fff" />
+                        <rect x="40" y="40" width="10" height="10" fill="#000" />
+                        <rect x="150" y="40" width="10" height="10" fill="#000" />
+                        <rect x="40" y="150" width="10" height="10" fill="#000" />
+                        <rect x="80" y="20" width="10" height="10" fill="#000" />
+                        <rect x="100" y="30" width="10" height="10" fill="#000" />
+                        <rect x="20" y="80" width="10" height="10" fill="#000" />
+                        <rect x="60" y="80" width="10" height="10" fill="#000" />
+                        <rect x="130" y="80" width="10" height="10" fill="#000" />
+                        <rect x="170" y="80" width="10" height="10" fill="#000" />
+                        <rect x="80" y="130" width="10" height="10" fill="#000" />
+                        <rect x="100" y="150" width="10" height="10" fill="#000" />
+                    </svg>
+                </div>
+                <p class="upi-id">UPI: symposium@avs</p>
+            </div>
+        </div>
+    `;
+
     modalBody.innerHTML = modalContent;
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
+
+    // Setup form event listeners for this department
+    setupDepartmentFormListeners(deptKey);
 }
 
 function closeModal() {
@@ -343,110 +450,92 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// Registration Form - Dynamic Paper Topic Selection
-const registerForm = document.getElementById('registerForm');
-const departmentSelect = registerForm.querySelector('select[name="department"]');
-const eventSelect = registerForm.querySelector('select[name="event"]');
-const paperTopicField = document.getElementById('paperTopicField');
-const paperTopicSelect = document.getElementById('paperTopicSelect');
+// Setup form listeners for department-specific registration
+function setupDepartmentFormListeners(deptKey) {
+    const form = document.querySelector('.dept-register-form');
+    const eventSelect = form.querySelector('.event-select');
+    const paperTopicField = form.querySelector('.paper-topic-field');
+    const paperTopicSelect = form.querySelector('.paper-topic-select');
 
-// Show/hide paper topic field based on event selection
-eventSelect.addEventListener('change', () => {
-    if (eventSelect.value === 'paper') {
-        paperTopicField.style.display = 'block';
-        paperTopicSelect.required = true;
-        updatePaperTopics();
-    } else {
+    // Show/hide paper topic field based on event selection
+    eventSelect.addEventListener('change', () => {
+        if (eventSelect.value === 'paper') {
+            paperTopicField.style.display = 'block';
+            paperTopicSelect.required = true;
+        } else {
+            paperTopicField.style.display = 'none';
+            paperTopicSelect.required = false;
+            paperTopicSelect.value = '';
+        }
+    });
+
+    // Form submission
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        // Get form data
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData);
+        data.department = deptKey;
+
+        // Validation
+        if (!data.name || !data.email || !data.mobile || !data.college || !data.year || !data.event) {
+            alert('Please fill all required fields!');
+            return;
+        }
+
+        // Validate paper topic if paper presentation is selected
+        if (data.event === 'paper' && !data.paper_topic) {
+            alert('Please select a paper presentation topic!');
+            return;
+        }
+
+        // Get event name for confirmation
+        const eventNames = {
+            'paper': 'Paper Presentation',
+            'technical': 'Technical Event',
+            'non-technical': 'Non-Technical Event',
+            'project': 'Project Expo'
+        };
+        const selectedEventName = eventNames[data.event] || data.event;
+        const paperTopicText = data.paper_topic ? ` (Topic: ${data.paper_topic})` : '';
+        const deptName = departmentData[deptKey].name;
+
+        // Simulate sending confirmation Email and SMS
+        const confirmationMessage = `✅ Registration Successful!
+
+You are registered for ${selectedEventName}${paperTopicText}
+Department: ${deptName}
+Event Date: 6 March 2026
+
+Confirmation will be sent to:
+📧 Email: ${data.email}
+📱 Mobile: ${data.mobile}
+
+Please complete payment of ₹200 using the QR code above.
+
+Thank you for registering for Vyugam'26!`;
+
+        // Show confirmation
+        alert(confirmationMessage);
+
+        // Log for demonstration
+        console.log('📧 Email Confirmation Sent to:', data.email);
+        console.log('📱 SMS Confirmation Sent to:', data.mobile);
+        console.log('Registration Data:', data);
+
+        // Reset form
+        form.reset();
         paperTopicField.style.display = 'none';
         paperTopicSelect.required = false;
-        paperTopicSelect.value = '';
-    }
-});
 
-// Update paper topics when department changes
-departmentSelect.addEventListener('change', () => {
-    if (eventSelect.value === 'paper') {
-        updatePaperTopics();
-    }
-});
-
-// Function to update paper topics based on selected department
-function updatePaperTopics() {
-    const selectedDept = departmentSelect.value;
-    paperTopicSelect.innerHTML = '<option value="">Select Topic</option>';
-
-    if (selectedDept && departmentData[selectedDept] && departmentData[selectedDept].paperTopics) {
-        departmentData[selectedDept].paperTopics.forEach(topic => {
-            const option = document.createElement('option');
-            option.value = topic;
-            option.textContent = topic;
-            paperTopicSelect.appendChild(option);
-        });
-    }
+        // Close modal and scroll to home
+        closeModal();
+        setTimeout(() => {
+            document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
+        }, 300);
+    });
 }
-
-// Form submission with confirmation
-registerForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    // Get form data
-    const formData = new FormData(registerForm);
-    const data = Object.fromEntries(formData);
-
-    // Validation
-    if (!data.name || !data.college || !data.department || !data.mobile || !data.event || !data.email) {
-        alert('Please fill all required fields!');
-        return;
-    }
-
-    // Validate paper topic if paper presentation is selected
-    if (data.event === 'paper' && !data.paper_topic) {
-        alert('Please select a paper presentation topic!');
-        return;
-    }
-
-    // Get event name for confirmation
-    const eventNames = {
-        'paper': 'Paper Presentation',
-        'technical': 'Technical Event',
-        'non-technical': 'Non-Technical Event',
-        'project': 'Project Expo'
-    };
-    const selectedEventName = eventNames[data.event] || data.event;
-    const paperTopicText = data.paper_topic ? ` (Topic: ${data.paper_topic})` : '';
-
-    // Simulate sending confirmation Email and SMS
-    const confirmationMessage = `You are selected to participate in ${selectedEventName}${paperTopicText} at Vyugam'26 – AVS Engineering College.
-
-Event Details:
-Name: ${data.name}
-Department: ${data.department.toUpperCase()}
-Event: ${selectedEventName}${paperTopicText}
-Event Date: 6 March 2026
-College: ${data.college}
-
-We will send confirmation to:
-Email: ${data.email}
-Mobile: ${data.mobile}
-
-Thank you for registering!`;
-
-    // Show confirmation
-    alert(confirmationMessage);
-
-    // Log for demonstration (in production, this would send actual email/SMS)
-    console.log('📧 Email Confirmation Sent to:', data.email);
-    console.log('📱 SMS Confirmation Sent to:', data.mobile);
-    console.log('Registration Data:', data);
-
-    // Reset form
-    registerForm.reset();
-    paperTopicField.style.display = 'none';
-    paperTopicSelect.required = false;
-
-    // Scroll to home
-    document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
-});
 
 // Add touch feedback for mobile
 const touchElements = document.querySelectorAll('.dept-item, .btn-primary, .btn-submit, .nav-item');
